@@ -1,0 +1,8 @@
+{
+  "name": "Remix: Proje Tabanlı Yapay Zeka Eğitim Klavuzu",
+  "description": "Burak TURGUT tarafından verilecek olan Proje Tabanlı Yapay Zeka Eğitimi için 4 oturumluk modern rehber ve klavuz sitesi.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
