@@ -51,23 +51,11 @@ async function startServer() {
         parts: [{ text: message }]
       });
 
-      let response;
-      const modelsToTry = ["gemini-3.5-flash", "gemini-3.1-flash-lite"];
-      let lastError: any = null;
-
-      for (const modelName of modelsToTry) {
-        let attempts = 2;
-        let delay = 1000;
-        let success = false;
-
-        while (attempts > 0 && !success) {
-          try {
-            console.log(`AI Chat: Requesting content from ${modelName} (Attempts remaining: ${attempts})`);
-            response = await ai.models.generateContent({
-              model: modelName,
-              contents: contents,
-              config: {
-                systemInstruction: `Sen "Yapay Zekâ Eğitim Kılavuzu" projesinin beyin temalı uzman yapay zeka asistanısın. Adın: "Nöron Yapay Zekâ Asistanı".
+      const response = await ai.models.generateContent({
+        model: "gemini-3.5-flash",
+        contents: contents,
+        config: {
+          systemInstruction: `Sen "Yapay Zekâ Eğitim Kılavuzu" projesinin beyin temalı uzman yapay zeka asistanısın. Adın: "Nöron Yapay Zekâ Asistanı".
 
 Görevin: Öğretmenler için hazırlanan "Öğretmenler için Uygulamalı Proje Tabanlı Yapay Zekâ ile Ders Tasarımı Eğitimi" hakkında sorulan tüm sorulara net, doğru, son derece açıklayıcı ve kibar bir şekilde cevap vermektir.
 
@@ -90,38 +78,8 @@ Cevaplama Esasları:
 - Öğretmenlerin sordukları sorulara pedagojik bir dille yaklaş, onlara "Değerli Öğretmenim" veya "Hocam" diye hitap edebilirsin.
 - Eğer eğitim dışı veya alakasız sorular gelirse, kibarca odağı tekrar öğretmenler için hazırlanan bu özel yapay zeka eğitim programına çek.
 - "Gemini CLI" ile ilgili sorularda resmi belgelerdeki ve sitemizdeki adımları belirt (Kurulum linki: https://geminicli.com/docs/get-started/installation/ ve Kurulum komutu: npm install -g @google/clis).`
-              }
-            });
-            success = true;
-          } catch (err: any) {
-            lastError = err;
-            console.error(`Error with model ${modelName}:`, err?.message || err);
-            
-            // Check if transient error
-            const isTransient = err?.message?.includes("503") || 
-                                err?.message?.includes("experiencing high demand") || 
-                                err?.message?.includes("UNAVAILABLE") ||
-                                err?.message?.includes("Resource") ||
-                                err?.message?.includes("429");
-            
-            if (isTransient && attempts > 1) {
-              attempts--;
-              await new Promise((resolve) => setTimeout(resolve, delay));
-              delay *= 1.5;
-            } else {
-              break; // Try next model from modelsToTry list
-            }
-          }
         }
-
-        if (success && response) {
-          break;
-        }
-      }
-
-      if (!response) {
-        throw lastError || new Error("Şu anda tüm yapay zeka sunucuları yüksek talep nedeniyle yanıt vermiyor. Lütfen birkaç saniye sonra tekrar deneyin.");
-      }
+      });
 
       res.json({ text: response.text });
     } catch (error: any) {
