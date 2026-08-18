@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Modül 5 — Bağlayıcılar, MCP ve Claude Cowork ile İş Otomasyonu | AI Eğitim Kılavuzu</title>
+<meta name="description" content="MCP nedir, Gmail/Takvim/GitHub bağlantıları nasıl kurulur, Claude Cowork ile bilgisayarındaki klasörler nasıl otomatikleştirilir." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body data-page="modul-5">
+<a class="skip-link" href="#main">İçeriğe geç</a>
+<div id="site-header"></div>
+
+<main id="main">
+  <div class="page-head">
+    <div class="container">
+      <span class="eyebrow">📦 Modül 5 / 10</span>
+      <h1>Bağlayıcılar, MCP ve Claude Cowork ile İş Otomasyonu</h1>
+      <p class="page-lead">
+        Bu modülde Claude'u kendi "balonundan" çıkarıp gerçek dünyaya — e-postana, takvimine,
+        bilgisayarındaki klasörlerine — bağlıyoruz. Sohbet etmekten gerçek görevleri devretmeye geçiş
+        burada başlıyor.
+      </p>
+      <div class="meta-row">
+        <span class="meta-chip">⏱️ Tahmini süre: 75-100 dakika</span>
+        <span class="meta-chip">🎯 Ön koşul: Modül 1, Modül 4</span>
+        <span class="meta-chip">🧰 İhtiyacın olan: Claude hesabı, (opsiyonel) Gmail/GitHub hesabı</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="container two-col">
+      <div class="prose">
+
+        <h2 id="mcp-nedir"><span class="num">1</span>MCP kavramının sade ve uygulamalı anlatımı</h2>
+        <p class="lead"><strong>MCP (Model Context Protocol)</strong>, yapay zekâ modellerinin dış
+          uygulamalarla (e-posta, takvim, veritabanı, dosya sistemi vb.) ortak, standart bir "dil"
+          üzerinden konuşmasını sağlayan açık bir protokoldür.</p>
+        <p>Bunu bir "evrensel priz adaptörü" gibi düşünebilirsin: MCP olmadan her uygulama için ayrı
+          bir entegrasyon yazman gerekirdi; MCP sayesinde Claude, bu standardı destekleyen herhangi
+          bir araca aynı yöntemle bağlanabilir.</p>
+
+        <h3>Connector (bağlayıcı) ve MCP arasındaki ilişki</h3>
+        <p>Bir <strong>Connector</strong>, MCP protokolünü kullanarak Claude ile belirli bir uygulama
+          (örn. Gmail) arasında kurulan hazır bağlantıdır. Yani MCP alt yapı/protokol, Connector ise
+          bu protokolü kullanan somut, tıkla-bağlan entegrasyondur.</p>
+
+        <h2 id="baglantilar"><span class="num">2</span>Yaygın bağlantılar: Gmail, Takvim, GitHub, Canva, Figma</h2>
+        <p>claude.ai ayarlarındaki "Connectors" (Bağlayıcılar) bölümünden, izin verdiğin hesaplarla
+          Claude'u eşleştirebilirsin. En sık kullanılan bağlantılar:</p>
+        <div class="grid grid-2">
+          <div class="card-flat"><b style="color:#fff;">📧 Gmail / Google Takvim</b><p style="font-size:12.5px;color:var(--text-soft);margin-top:6px;">E-postaları özetleme, taslak yanıt hazırlama, takvime etkinlik ekleme/kontrol etme.</p></div>
+          <div class="card-flat"><b style="color:#fff;">🐙 GitHub</b><p style="font-size:12.5px;color:var(--text-soft);margin-top:6px;">Kod depolarını (repository) okuma, issue/pull request oluşturma ve inceleme.</p></div>
+          <div class="card-flat"><b style="color:#fff;">🎨 Canva</b><p style="font-size:12.5px;color:var(--text-soft);margin-top:6px;">Sunum ve görsel tasarımları doğrudan Claude üzerinden oluşturma/düzenleme.</p></div>
+          <div class="card-flat"><b style="color:#fff;">🧩 Figma</b><p style="font-size:12.5px;color:var(--text-soft);margin-top:6px;">Tasarım dosyalarını okuma, bileşenleri koda dönüştürme.</p></div>
+        </div>
+        <div class="callout warn" style="margin-top:16px;">
+          <span class="co-icon">🔐</span>
+          <div><div class="co-title">Haricî uygulamalardan veri alma ve işlem gerçekleştirme</div>
+          <p>Bir bağlantı kurduğunda Claude, o uygulamada yalnızca senin izin verdiğin işlemleri
+             (örn. sadece okuma ya da okuma+yazma) yapabilir. Bir bağlantıyı etkinleştirmeden önce
+             hangi izinleri verdiğini mutlaka gözden geçir.</p></div>
+        </div>
+
+        <h2 id="cowork"><span class="num">3</span>Claude Cowork arayüzünün tanıtılması</h2>
+        <p class="lead">Claude Cowork, bilgisayarındaki gerçek klasörlerde çalışan, görev tabanlı bir
+          çalışma modudur.</p>
+
+        <h3>Sohbet ile görev arasındaki fark</h3>
+        <p>Normal bir sohbette Claude'a soru sorup cevap alırsın. Cowork'te ise Claude'a bir
+          <strong>görev</strong> verirsin ("şu klasördeki tüm faturaları sınıflandır" gibi); Claude bu
+          görevi arka planda kendi başına yürütür ve bittiğinde seni bilgilendirir.</p>
+
+        <h3>Bilgisayarındaki yerel klasörleri Claude'a bağlama</h3>
+        <div class="step-list">
+          <div class="step-item"><div class="sn">1</div><div class="st"><b>Cowork'ü aç.</b><p>Claude arayüzünde Cowork bölümüne geç.</p></div></div>
+          <div class="step-item"><div class="sn">2</div><div class="st"><b>Bir klasör seç.</b><p>Üzerinde çalışmasını istediğin klasörü (örn. "Belgeler/Sınav Sonuçları") bağla.</p></div></div>
+          <div class="step-item"><div class="sn">3</div><div class="st"><b>İzin kapsamını belirle.</b><p>Sadece okuma mı, yoksa dosya oluşturma/düzenleme izni de mi vereceğine karar ver.</p></div></div>
+          <div class="step-item"><div class="sn">4</div><div class="st"><b>Görevi tanımla.</b><p>Ne yapılmasını istediğini net bir brief ile yaz (bkz. Modül 3).</p></div></div>
+        </div>
+
+        <h3>Klasör içerisindeki belgeleri, tabloları ve dosyaları analiz etme</h3>
+        <p>Cowork; PDF, Word, Excel ve metin dosyalarını tek tek açmadan toplu şekilde okuyup
+          özetleyebilir, ortak örüntüleri (örn. tekrar eden hatalar, eksik alanlar) tespit edebilir.</p>
+
+        <h3>Dosya oluşturma, düzenleme, sınıflandırma ve raporlama</h3>
+        <div class="prompt-ex good">
+          <div class="ph">✅ Örnek görev</div>
+          <div class="pb">"'Faturalar' klasöründeki tüm PDF dosyalarını tarih ve firma adına göre
+            yeniden adlandır, ardından toplam tutarları gösteren bir özet Excel tablosu oluştur."</div>
+        </div>
+
+        <h3>Klasör izinlerinin yönetilmesi</h3>
+        <p>Bir klasöre erişim verdikten sonra bu izni istediğin zaman geri alabilir, sadece belirli
+          alt klasörlere erişimi sınırlayabilirsin. Hassas dosyaların bulunduğu klasörleri asla toplu
+          olarak bağlamamaya özen göster.</p>
+
+        <h2 id="gorev-turleri"><span class="num">4</span>Tek seferlik görev ve sürekli çalışan görev oluşturma</h2>
+        <p>Cowork'te bir görevi <strong>tek seferlik</strong> (bir kez çalışıp biter) ya da
+          <strong>sürekli/periyodik</strong> (belirli aralıklarla otomatik tekrarlanır) olarak
+          tanımlayabilirsin. Periyodik görevleri Modül 6'da "Schedule" (Zamanlanmış Görevler)
+          başlığı altında derinlemesine işleyeceğiz.</p>
+
+        <h3>Projects ile Cowork arasında bağlantı kurma</h3>
+        <p>Bir Cowork görevinin ürettiği çıktıları (örneğin haftalık bir özet raporu), ilgili Claude
+          Project'ine bağlayarak, o projenin genel bağlamının bir parçası hâline getirebilirsin.</p>
+
+        <h2 id="farklar"><span class="num">5</span>Skills, connectors ve plugins arasındaki farklar</h2>
+        <div class="tbl-wrap">
+          <table class="dtbl">
+            <thead><tr><th>Kavram</th><th>Ne sağlar?</th></tr></thead>
+            <tbody>
+              <tr><td><b>Skill (Beceri)</b></td><td>Claude'a belirli bir görevi <em>nasıl</em> yapacağını öğreten talimat paketi (bkz. Modül 4).</td></tr>
+              <tr><td><b>Connector (Bağlayıcı)</b></td><td>Claude'u dış bir uygulamaya (Gmail, GitHub vb.) bağlayan tekil entegrasyon.</td></tr>
+              <tr><td><b>Plugin (Eklenti)</b></td><td>Birden fazla beceri ve bağlantıyı bir araya getiren, paketlenmiş, dağıtılabilir bütün.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Yani bir plugin, birkaç Skill'i ve birkaç Connector'ü bir arada sunan, kurulumu tek adımda
+          yapılan bir "paket" gibi düşünülebilir — örneğin "Muhasebe Asistanı" adlı bir plugin; fatura
+          okuma becerisini, Excel bağlantısını ve e-posta bağlayıcısını tek seferde etkinleştirebilir.</p>
+
+        <div class="callout goal" style="margin-top:26px;">
+          <span class="co-icon">🎯</span>
+          <div><div class="co-title">Modül çıktısı</div>
+          <p>Claude Cowork aracılığıyla bilgisayarındaki dosya ve klasörlerde çalışan, görev tabanlı
+             iş akışları oluşturabiliyorsun.</p></div>
+        </div>
+      </div>
+      <aside class="toc" id="pageToc"></aside>
+    </div>
+  </div>
+
+  <div class="section tight">
+    <div class="container">
+      <div class="pn-nav">
+        <a class="pn-card" href="modul-4.html"><span class="pn-lbl">← Geri</span><span class="pn-title">Modül 4: Claude Chat, Projeler ve Artifacts</span></a>
+        <a class="pn-card next" href="modul-6.html"><span class="pn-lbl">Sıradaki →</span><span class="pn-title">Modül 6: Zamanlanmış Görevler ve Canlı Paneller</span></a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+<script src="js/main.js"></script>
+</body>
+</html>

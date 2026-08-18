@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI Modelleri — ChatGPT, Claude, Gemini ve Diğerleri | AI Eğitim Kılavuzu</title>
+<meta name="description" content="Popüler yapay zekâ modellerinin karşılaştırmalı kataloğu: hangi model hangi işte öne çıkıyor, resmi bağlantılarıyla birlikte." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body data-page="modeller">
+<a class="skip-link" href="#main">İçeriğe geç</a>
+<div id="site-header"></div>
+
+<main id="main">
+  <div class="page-head">
+    <div class="container">
+      <span class="eyebrow">🧩 Katalog</span>
+      <h1>Yapay Zekâ Modelleri</h1>
+      <p class="page-lead">
+        Eğitim ve günlük işlerinde konumlandırabileceğin en güçlü üretken yapay zekâ modellerinin
+        karşılaştırmalı kataloğu. Her kartın altındaki bağlantı, doğrudan modelin resmi sitesine
+        gider ve yeni sekmede açılır.
+      </p>
+      <div class="meta-row">
+        <span class="meta-chip">📊 10 model</span>
+        <span class="meta-chip">🔗 Tüm bağlantılar resmi kaynaklara gider</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="container">
+      <div class="callout info">
+        <span class="co-icon">🏆</span>
+        <div><div class="co-title">Objektif karşılaştırma ister misin?</div>
+        <p><b>LM Arena</b>, modelleri gerçek kullanıcı oylarıyla; metin, arama, kodlama, görsel ve
+           video kategorilerinde canlı olarak sıralayan bağımsız bir platformdur.
+           <a href="https://lmarena.ai" target="_blank" rel="noopener noreferrer" style="color:var(--blue);font-weight:700;">lmarena.ai'ı ziyaret et ↗</a></p></div>
+      </div>
+
+      <div class="grid grid-3" style="margin-top:26px;" id="modelGrid"></div>
+    </div>
+  </div>
+
+  <div class="section tight">
+    <div class="container">
+      <div class="card">
+        <h3 style="color:#fff;font-size:17px;">Hızlı Karşılaştırma Tablosu</h3>
+        <div class="tbl-wrap">
+          <table class="dtbl">
+            <thead><tr><th>Model</th><th>Geliştirici</th><th>En Güçlü Yönü</th><th>Önerilen Kullanım</th></tr></thead>
+            <tbody id="modelTable"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="container">
+      <div class="card" style="text-align:center;padding:36px 24px;">
+        <span class="eyebrow teal">📚 Modelleri nasıl kullanacağını mı öğrenmek istiyorsun?</span>
+        <h2 style="color:#fff;font-size:20px;margin-top:10px;">1. Gün'de model karşılaştırma egzersizini uygula.</h2>
+        <div class="hero-actions" style="margin-top:16px;">
+          <a class="btn btn-primary" href="gun-1.html#modeller">1. Gün'e Git →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+<script src="js/main.js"></script>
+<script>
+(function () {
+  var MODELS = [
+    { id: "chatgpt", name: "ChatGPT", developer: "OpenAI", description: "Dünyada en yaygın kullanılan yapay zekâ sohbet modeli.", strength: "Genel amaçlı kullanım, kodlama, içerik üretimi.", url: "https://chatgpt.com", useCase: "Genel kullanım, eğitim, içerik üretimi" },
+    { id: "gemini", name: "Gemini", developer: "Google", description: "Google'ın çok modlu yapay zekâ modeli.", strength: "Dev bağlam penceresi, Google servisleri entegrasyonu.", url: "https://gemini.google.com", useCase: "Google entegrasyonu, uzun bağlam, güncel arama" },
+    { id: "claude", name: "Claude", developer: "Anthropic", description: "Uzun doküman analizi ve yazı üretiminde güçlü, ajan tabanlı çalışmanın merkezi.", strength: "Akademik seviyede muhakeme, PDF/rapor analizi, kod mimarisi.", url: "https://claude.ai", useCase: "Doküman analizi, ajan tabanlı otomasyon, kod geliştirme" },
+    { id: "grok", name: "Grok", developer: "xAI", description: "X (Twitter) verilerine erişebilen model.", strength: "Güncel olaylar, sosyal medya analizi.", url: "https://grok.com", useCase: "Güncel olaylar ve sosyal medya verileri" },
+    { id: "deepseek", name: "DeepSeek", developer: "DeepSeek", description: "Güçlü ve düşük maliyetli açık modeller sunan bir aile.", strength: "Kodlama ve mantıksal akıl yürütme.", url: "https://www.deepseek.com", useCase: "Kodlama ve mantıksal problem çözme" },
+    { id: "qwen", name: "Qwen", developer: "Alibaba", description: "Hızla gelişen, çok dilli bir model ailesi.", strength: "Kodlama, matematik ve çok dilli kullanım.", url: "https://chat.qwen.ai", useCase: "Kodlama, matematik ve çoklu dil desteği" },
+    { id: "mistral", name: "Mistral AI", developer: "Mistral AI", description: "Avrupa merkezli, açık kaynak odaklı model ailesi.", strength: "Yerel kurulum ve özelleştirmeye uygunluk.", url: "https://mistral.ai", useCase: "Açık kaynak ve yerel kullanım" },
+    { id: "llama", name: "Meta AI (Llama)", developer: "Meta", description: "Meta'nın açık kaynaklı Llama model ailesi.", strength: "Yerel yapay zekâ projeleri geliştirme.", url: "https://www.meta.ai", useCase: "Açık kaynak yapay zekâ projeleri" },
+    { id: "perplexity", name: "Perplexity AI", developer: "Perplexity AI", description: "Arama motoru destekli, kaynak gösteren yapay zekâ.", strength: "Kaynak göstererek güncel araştırma yapma.", url: "https://www.perplexity.ai", useCase: "Kaynak göstererek araştırma yapma" },
+    { id: "copilot", name: "Microsoft Copilot", developer: "Microsoft", description: "Microsoft 365 ekosistemine gömülü yapay zekâ.", strength: "Word, Excel, PowerPoint ve Outlook desteği.", url: "https://copilot.microsoft.com", useCase: "Office belgeleri içinde doğrudan çalışma" }
+  ];
+
+  function render() {
+    var grid = document.getElementById("modelGrid");
+    var tbody = document.getElementById("modelTable");
+    if (grid) {
+      grid.innerHTML = MODELS.map(function (m) {
+        return (
+          '<div class="card-flat" style="display:flex;flex-direction:column;gap:10px;">' +
+            '<div style="display:flex;align-items:center;gap:10px;">' +
+              '<div class="icon-bubble" style="font-size:15px;font-weight:800;color:#fff;background:var(--indigo-soft);">' + m.name.charAt(0) + '</div>' +
+              '<div><b style="color:#fff;font-size:14.5px;">' + m.name + '</b><div style="font-size:11px;color:var(--text-mute);font-weight:700;">' + m.developer + '</div></div>' +
+            '</div>' +
+            '<p style="font-size:12.5px;color:var(--text-soft);">' + m.description + '</p>' +
+            '<div style="font-size:11.5px;color:var(--text-soft);background:var(--panel);border:1px solid var(--border-soft);border-radius:8px;padding:8px 10px;"><b style="color:var(--blue);">Güçlü yönü:</b> ' + m.strength + '</div>' +
+            '<a href="' + m.url + '" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm" style="justify-content:center;margin-top:auto;">' + m.name + "'i Aç ↗</a>" +
+          '</div>'
+        );
+      }).join("");
+    }
+    if (tbody) {
+      tbody.innerHTML = MODELS.map(function (m) {
+        return '<tr><td><b>' + m.name + '</b></td><td>' + m.developer + '</td><td>' + m.strength + '</td><td>' + m.useCase + '</td></tr>';
+      }).join("");
+    }
+  }
+  document.addEventListener("DOMContentLoaded", render);
+})();
+</script>
+</body>
+</html>

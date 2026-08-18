@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Modül 3 — Terminal Kullanımı ve Ajanla Etkili İletişim | AI Eğitim Kılavuzu</title>
+<meta name="description" content="Terminal temelleri, dosya yolu mantığı, temel komutlar, iyi bir görev tanımı yazma, plan-onay döngüsü, geri alma ve CLAUDE.md dosyası kullanımı." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body data-page="modul-3">
+<a class="skip-link" href="#main">İçeriğe geç</a>
+<div id="site-header"></div>
+
+<main id="main">
+  <div class="page-head">
+    <div class="container">
+      <span class="eyebrow indigo">📦 Modül 3 / 10</span>
+      <h1>Terminal Kullanımı ve Ajanla Etkili İletişim</h1>
+      <p class="page-lead">
+        Terminal ilk bakışta ürkütücü görünebilir ama aslında birkaç düzine komuttan fazlasına ihtiyacın
+        yok. Bu modülde hem terminalin temellerini hem de bir yapay zekâ ajanına <em>nasıl</em> görev
+        vereceğini — ki bu, aracın kendisinden daha önemli bir beceridir — öğreneceksin.
+      </p>
+      <div class="meta-row">
+        <span class="meta-chip">⏱️ Tahmini süre: 60-75 dakika</span>
+        <span class="meta-chip">🎯 Ön koşul: Modül 2</span>
+        <span class="meta-chip">🧰 İhtiyacın olan: Kurulu Claude Code + terminal</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="container two-col">
+      <div class="prose">
+
+        <h2 id="terminal-nedir"><span class="num">1</span>Terminal arayüzünün tanınması</h2>
+        <p class="lead">Terminal, bilgisayarına fare ile tıklamak yerine yazarak komut verdiğin bir
+          pencere. Karşına genelde şöyle bir satır çıkar:</p>
+        <div class="code-block"><pre>C:\Kullanicilar\senin-adin&gt; _</pre></div>
+        <p>Bu satıra <strong>komut satırı istemi (prompt)</strong> denir ve imleç (_) senin komut
+          yazmanı bekler. Korkacak bir şey yok — yanlış bir komut yazsan bile bilgisayarın "zarar
+          görmez", genelde sadece bir hata mesajı görürsün.</p>
+
+        <h2 id="yol-mantigi"><span class="num">2</span>Dosya ve klasör yolu mantığı</h2>
+        <p>Bilgisayarındaki her dosya ve klasör, bir "adres" ile tanımlanır — buna <strong>yol
+          (path)</strong> denir. İki tür yol vardır:</p>
+        <ul class="bullets">
+          <li><b>Mutlak yol:</b> Kök dizinden başlayan tam adres. Örn. Windows'ta
+            <code>C:\Kullanicilar\Ayse\Belgeler\proje</code>, macOS/Linux'ta <code>/Users/ayse/Belgeler/proje</code>.</li>
+          <li><b>Göreli yol:</b> Şu an bulunduğun konuma göre tanımlanan kısa adres. Örn. bir üst
+            klasöre çıkmak için <code>..</code>, mevcut klasör için <code>.</code>.</li>
+        </ul>
+
+        <h2 id="temel-komutlar"><span class="num">3</span>Temel terminal komutları</h2>
+        <div class="tbl-wrap">
+          <table class="dtbl">
+            <thead><tr><th>Komut</th><th>Ne işe yarar</th><th>Örnek kullanım</th></tr></thead>
+            <tbody>
+              <tr><td><code>pwd</code></td><td>Şu an hangi klasörde olduğunu gösterir (Windows'ta <code>cd</code> tek başına da işe yarar)</td><td><code>pwd</code></td></tr>
+              <tr><td><code>cd</code></td><td>Klasör değiştirir (change directory)</td><td><code>cd Belgeler/proje</code></td></tr>
+              <tr><td><code>ls</code> / <code>dir</code></td><td>Bulunduğun klasördeki dosya ve klasörleri listeler (macOS/Linux: <code>ls</code>, Windows: <code>dir</code> veya PowerShell'de <code>ls</code>)</td><td><code>ls</code></td></tr>
+              <tr><td><code>mkdir</code></td><td>Yeni bir klasör oluşturur</td><td><code>mkdir yeni-proje</code></td></tr>
+              <tr><td><code>rm</code> / <code>del</code></td><td>Dosya siler — dikkatli kullan!</td><td><code>rm eski-dosya.txt</code></td></tr>
+              <tr><td><code>cat</code> / <code>type</code></td><td>Bir dosyanın içeriğini ekrana yazdırır</td><td><code>cat notlar.txt</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="code-block">
+          <button class="copy-btn">📋 Kopyala</button>
+          <pre># Kısa bir alıştırma:
+mkdir ilk-projem      # "ilk-projem" adında yeni bir klasör oluştur
+cd ilk-projem         # o klasörün içine gir
+pwd                   # şu an nerede olduğunu doğrula
+ls                    # klasörün içeriğini listele (henüz boş olacak)</pre>
+        </div>
+
+        <h2 id="surec-yonetimi"><span class="num">4</span>Çalışan bir süreci durdurma ve yeniden başlatma</h2>
+        <p>Bir ajan (veya herhangi bir program) terminalde çalışırken bazen onu durdurman gerekebilir
+          — örneğin yanlış bir komut çalıştırdıysan ya da işlem çok uzun sürüyorsa. Bunun için
+          klavyeden <strong>Ctrl + C</strong> tuş kombinasyonu kullanılır (macOS'ta da aynı). Bu, o an
+          çalışan işlemi güvenle iptal eder. İşlemi yeniden başlatmak için sadece aynı komutu tekrar
+          yazman yeterlidir.</p>
+
+        <h2 id="hata-analizi"><span class="num">5</span>Terminal hata mesajlarını yapay zekâ ile analiz etme</h2>
+        <p>Terminal hata mesajları ilk bakışta korkutucu görünebilir ("Error: ENOENT", "command not
+          found" gibi). Bunun için harcayacağın en verimli zaman, hatayı Claude'a olduğu gibi
+          yapıştırıp yorumlatmaktır:</p>
+        <div class="prompt-ex good">
+          <div class="ph">✅ Örnek istem</div>
+          <div class="pb">"Terminalde şu hatayı aldım: [hata mesajını buraya yapıştır]. Bu hatanın
+            olası nedenini basitçe açıkla ve çözmek için hangi komutu çalıştırmam gerektiğini adım
+            adım söyle."</div>
+        </div>
+
+        <h2 id="brief"><span class="num">6</span>İyi bir görev tanımı ve brief hazırlama</h2>
+        <p class="lead">Bir ajana verdiğin görev ne kadar net ise, sonuç o kadar isabetli olur. İyi
+          bir görev tanımı (brief) dört unsur içerir:</p>
+        <ul class="bullets">
+          <li><b>Hedef:</b> Ne elde etmek istiyorsun? ("Bir öğrenci listesi tablosu oluştur")</li>
+          <li><b>Bağlam:</b> Ajanın bilmesi gereken arka plan bilgisi ("Veriler CSV formatında,
+            'ogrenciler.csv' dosyasında")</li>
+          <li><b>Kısıtlar:</b> Uyulması gereken kurallar ("Gerçek isim kullanma, sentetik veri üret")</li>
+          <li><b>Kabul kriteri:</b> Görevin "bitti" sayılması için ne olması gerektiği ("Tabloda 20
+            satır ve 5 sütun olmalı, çıktı olarak bir .html dosyası üretilmeli")</li>
+        </ul>
+
+        <h2 id="baglam"><span class="num">7</span>Yapay zekâ ajanına yeterli bağlam sağlama</h2>
+        <p>Bir ajan, sen ne kadar bağlam verirsen o kadar isabetli çalışır. Proje klasöründeki dosya
+          yapısını, kullandığın teknolojileri veya önceki kararlarını ajana anlatmak zaman
+          kaybettirmez — tam tersine, yanlış varsayımlarla yapılan işi düzeltmek için harcanacak
+          zamandan tasarruf ettirir.</p>
+
+        <h2 id="bolme"><span class="num">8</span>Karmaşık görevleri küçük adımlara bölme</h2>
+        <p>"Bana bir web sitesi kur" gibi devasa bir görev yerine, bunu küçük, doğrulanabilir
+          parçalara böl: "Önce ana sayfanın HTML iskeletini oluştur", "Şimdi navigasyon menüsünü
+          ekle", "Şimdi mobil görünümü düzelt" gibi. Her adımdan sonra sonucu kontrol edip bir sonraki
+          adıma geçmek, hem hataları erken yakalamanı hem de ajanın doğru yönde ilerlemesini sağlar.</p>
+
+        <h2 id="plan-dongusu"><span class="num">9</span>Plan oluşturma, planı onaylama ve uygulama döngüsü</h2>
+        <p>Karmaşık bir görev verdiğinde, ajandan önce bir <strong>plan</strong> sunmasını isteyebilir
+          ve bu planı uygulamaya geçmeden önce gözden geçirebilirsin. Bu üç adımlı döngü riski büyük
+          ölçüde azaltır:</p>
+        <div class="step-list">
+          <div class="step-item"><div class="sn">1</div><div class="st"><b>Plan iste.</b><p>"Bu görevi nasıl yapacağını, hangi dosyaları değiştireceğini adım adım planla, henüz uygulama."</p></div></div>
+          <div class="step-item"><div class="sn">2</div><div class="st"><b>Planı gözden geçir.</b><p>Planın mantıklı olup olmadığını, hangi dosyaların etkileneceğini kontrol et.</p></div></div>
+          <div class="step-item"><div class="sn">3</div><div class="st"><b>Onayla ve uygulat.</b><p>Plan uygunsa "Onaylıyorum, uygula" de; değilse değişiklik iste.</p></div></div>
+        </div>
+
+        <h2 id="geri-alma"><span class="num">10</span>Yanlış işlemleri geri alma ve önceki sürüme dönme</h2>
+        <p>Bir ajan yanlış bir değişiklik yaptığında paniğe gerek yok. Claude Code'a doğrudan
+          "Son yaptığın değişikliği geri al" diyebilirsin. Proje bir Git deposu ise (Modül 7'de
+          detaylandırılacak), önceki bir kayıtlı sürüme dönmek de mümkündür — bu, deneme yapmaktan
+          korkmamanı sağlayan en önemli güvenlik ağıdır.</p>
+
+        <h2 id="claude-md"><span class="num">11</span>Proje talimat dosyası olarak CLAUDE.md kullanımı</h2>
+        <p>Bir projenin ana klasörüne <code>CLAUDE.md</code> adında bir dosya eklersen, Claude Code
+          her seferinde o dosyayı otomatik olarak okur ve talimatlarına uyar. Bu, her sohbette aynı
+          kuralları tekrar tekrar yazmak zorunda kalmamanı sağlar.</p>
+        <div class="code-block">
+          <button class="copy-btn">📋 Kopyala</button>
+          <pre># CLAUDE.md — örnek proje talimat dosyası
+
+## Proje Hakkında
+Bu, öğrenci takibi için hazırlanan basit bir web uygulamasıdır.
+
+## Kurallar
+- Yanıtları her zaman Türkçe ver.
+- Gerçek öğrenci verisi kullanma, sadece sentetik/örnek veri kullan.
+- Kod değişikliklerinden önce kısa bir plan sun, onay bekle.
+- Tasarımda mavi ve beyaz tonlarını kullan.
+
+## Teknik Tercihler
+- Sade HTML/CSS/JavaScript kullan, gereksiz kütüphane ekleme.
+- Değişken ve fonksiyon isimlerini İngilizce, açıklamaları Türkçe yaz.</pre>
+        </div>
+
+        <h2 id="yeni-oturum"><span class="num">12</span>Yeni sohbet, yeni görev veya yeni oturum başlatma ölçütleri</h2>
+        <p>Konudan konuya atladıkça sohbet geçmişi şişer ve ajanın odağı dağılabilir. Aşağıdaki
+          durumlarda yeni bir sohbet/oturum başlatmak daha sağlıklıdır:</p>
+        <ul class="bullets">
+          <li>Tamamen alakasız yeni bir projeye geçtiğinde</li>
+          <li>Önceki görev tamamlanıp kapatıldığında (bir sonraki görev bağımsızsa)</li>
+          <li>Ajan tekrar tekrar aynı hatayı yapmaya başladığında (bağlam kirlenmiş olabilir)</li>
+          <li>Performans/yanıt hızı gözle görülür şekilde yavaşladığında</li>
+        </ul>
+
+        <div class="callout goal" style="margin-top:26px;">
+          <span class="co-icon">🎯</span>
+          <div><div class="co-title">Modül çıktısı</div>
+          <p>Terminalde temel işlemleri rahatça yapabiliyor ve yapay zekâ ajanına anlaşılır, kontrollü
+             ve uygulanabilir görevler verebiliyorsun.</p></div>
+        </div>
+      </div>
+      <aside class="toc" id="pageToc"></aside>
+    </div>
+  </div>
+
+  <div class="section tight">
+    <div class="container">
+      <div class="pn-nav">
+        <a class="pn-card" href="modul-2.html"><span class="pn-lbl">← Geri</span><span class="pn-title">Modül 2: Kurulum ve Çalışma Ortamı</span></a>
+        <a class="pn-card next" href="modul-4.html"><span class="pn-lbl">Sıradaki →</span><span class="pn-title">Modül 4: Claude Chat, Projeler ve Artifacts</span></a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+<script src="js/main.js"></script>
+</body>
+</html>

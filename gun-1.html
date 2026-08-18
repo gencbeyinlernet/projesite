@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>1. Gün: Temeller — Yapay Zekâ Zihniyeti, Prompt ve Model Karşılaştırma | AI Eğitim Kılavuzu</title>
+<meta name="description" content="Eğitimin 1. günü: yapay zekâya giriş, prompt tasarımı, model karşılaştırması, veri analizi uygulaması ve KVKK'ya uygun çalışma — adım adım ve örneklerle." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body data-page="gun1">
+<a class="skip-link" href="#main">İçeriğe geç</a>
+<div id="site-header"></div>
+
+<main id="main">
+  <div class="page-head">
+    <div class="container">
+      <span class="eyebrow">📅 1. Gün</span>
+      <h1>Temeller: Yapay Zekâ Zihniyeti, Prompt Tasarımı ve Model Karşılaştırma</h1>
+      <p class="page-lead">
+        Dört günlük programın ilk günü. Bu günün sonunda; yapay zekânın nasıl "düşündüğünü", iyi bir
+        prompt'un neye benzediğini, ChatGPT / Claude / Gemini modellerini nasıl karşılaştıracağını,
+        sınıf/iş verinle nasıl güvenli analiz yapacağını ve KVKK kurallarına nasıl uyacağını biliyor
+        olacaksın.
+      </p>
+      <div class="meta-row">
+        <span class="meta-chip">⏱️ Tahmini süre: 1 gün / 6-8 saat</span>
+        <span class="meta-chip">🎯 Ön koşul: Yok — sıfırdan başlanabilir</span>
+        <span class="meta-chip">🧰 İhtiyacın olan: Sadece bir tarayıcı ve internet</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="container two-col">
+      <div class="prose">
+
+        <h2 id="tanitim"><span class="num">1</span>Programın ve paylaşım ortamının tanıtılması</h2>
+        <p class="lead">Her uzun yolculuk bir harita ile başlar. İlk yarım saat, dört gün boyunca nasıl
+          ilerleyeceğini ve nereden destek alacağını netleştirmek için ayrılır.</p>
+        <p>Eğitim, dört gün boyunca tamamen uygulamalı ilerler: her gün bir öncekinin üstüne yeni bir
+          beceri katmanı ekler. Sorular eğitim sırasında canlı olarak alınır ve program sonunda
+          tekrar niteliğinde bir soru-cevap oturumu yapılır. Bu kılavuz sitesindeki her sayfa, o günkü
+          sunum, kayıt, belge, video ve materyallerin dijital karşılığıdır — yani eğitimden sonra da
+          elinin altında kalıcı bir başvuru kaynağıdır.</p>
+        <p>Ayrıca <strong>GencBeyinler</strong> platformundaki ücretsiz kaynaklar, proje örnekleri, hazır
+          öğretmen/asistan şablonları ve topluluk çalışmaları da bu programın doğal bir uzantısıdır;
+          eğitim bittikten sonra da öğrenmeye devam etmek istediğinde oraya başvurabilirsin.</p>
+
+        <div class="callout tip">
+          <span class="co-icon">📌</span>
+          <div><div class="co-title">Bu kılavuzu nasıl kullanmalısın?</div>
+          <p>Her bölümü okurken, anlatılan örnek promptları kendi ChatGPT / Claude / Gemini sekmende
+             gerçekten dene. Sadece okumak değil, birlikte yazmak öğrenmeyi kalıcı kılar.</p></div>
+        </div>
+
+        <h2 id="vizyon"><span class="num">2</span>Eğitim vizyonu ve üretim kültürü</h2>
+        <p class="lead">Bu programın amacı sadece "araç tanıtmak" değil; kendi sistemini kurabilen,
+          proje geliştirebilen ve bunu sürdürülebilir kılan bir üretici hâline gelmen.</p>
+        <p>Program boyunca aktarılan yaklaşım şu üç ilkeye dayanır:</p>
+        <ul class="bullets">
+          <li><b>Araç değil, yetkinlik odaklı öğren:</b> Bugün popüler olan bir araç yarın değişebilir;
+            ama "iyi bir prompt nasıl yazılır", "bir görev nasıl küçük adımlara bölünür" gibi
+            yetkinlikler her araçta işine yarar.</li>
+          <li><b>Küçük ama düzenli yatırım yap:</b> Yapay zekâ araçlarına ayıracağın zaman ve (varsa)
+            bütçe, uzun vadede en büyük getiriyi sağlayan yatırımlardan biridir.</li>
+          <li><b>Not tut ve paylaş:</b> Çalışan promptlarını, kısa notlarını bir yerde biriktir;
+            LinkedIn gibi mesleki ağlarda paylaşmak hem senin hem de meslektaşlarının öğrenmesini
+            hızlandırır.</li>
+        </ul>
+
+        <h2 id="giris"><span class="num">3</span>Yapay zekâya giriş ve güvenli kullanım</h2>
+        <p class="lead">Yapay zekâyı etkili kullanmadan önce, ne olduğunu ve ne olmadığını net biçimde
+          anlamak gerekir.</p>
+
+        <h3>Temel kavramlar</h3>
+        <p><strong>Yapay zekâ (AI)</strong>, insan zekâsına benzer görevleri (öğrenme, muhakeme, karar
+          verme, ilişki kurma) yerine getirebilen sistemlerin genel adıdır. <strong>Makine öğrenmesi</strong>,
+          bu sistemlerin kurallarla değil, veriden örüntü öğrenerek çalışmasını sağlayan yöntemdir.
+          <strong>Üretken yapay zekâ (Generative AI)</strong> ise metin, görsel, ses ve kod gibi tamamen
+          yeni içerikler üretebilen; ChatGPT, Claude ve Gemini gibi araçların temelini oluşturan alt
+          dalıdır.</p>
+        <p>Bu sistemler dört temel yetiyle çalışır: <strong>muhakeme</strong> (bir problemi adım adım
+          çözme), <strong>öğrenme</strong> (örneklerden genelleme yapma), <strong>ilişki kurma</strong>
+          (bağlamı ve önceki mesajları hatırlama) ve <strong>karar verme</strong> (verilen seçenekler
+          arasından en uygununu önerme). Bir adım ileri gidildiğinde, görevleri kendi başına planlayıp
+          uygulayabilen sistemlere <strong>yapay zekâ ajanı</strong>, birden çok adımı zincirleme
+          şekilde yürüten mantığa da <strong>iş akışı (workflow)</strong> denir — bu kavramı Claude
+          Programı'nın 1. Modülünde çok daha derinlemesine işleyeceğiz.</p>
+
+        <h3>Öğretmen ve öğrenci rolleri açısından</h3>
+        <p>Eğitimde yapay zekâ, öğretmenin yerini almaz; planlama, içerik üretimi, ölçme-değerlendirme
+          ve rapor hazırlama gibi zaman alan işlerde bir "asistan" görevi görür. Öğrenciler için ise
+          doğru sınırlar çizilmediğinde kopyala-yapıştır alışkanlığına yol açabilir; bu yüzden
+          kullanım kurallarının baştan netleştirilmesi kritik önemdedir.</p>
+
+        <h3>Riskler ve etik çerçeve</h3>
+        <ul class="bullets">
+          <li><b>Halüsinasyon:</b> Yapay zekâ bazen var olmayan bir kaynağı, tarihi veya istatistiği
+            son derece kendinden emin bir dille "uydurabilir". Kritik bilgiler her zaman ayrıca
+            doğrulanmalıdır.</li>
+          <li><b>Dolandırıcılık riskleri:</b> Sesi/görüntüyü taklit eden (deepfake) araçlar, oltalama
+            (phishing) metinleri gibi kötüye kullanım senaryolarına karşı temkinli olunmalıdır.</li>
+          <li><b>Olumlu yönler:</b> Zaman tasarrufu, kişiselleştirilmiş öğrenme materyalleri, erişilebilirlik
+            (örn. metni sese çevirme) ve yaratıcı süreçlerde ilham kaynağı olma.</li>
+          <li><b>Olumsuz yönler:</b> Aşırı bağımlılık, eleştirel düşünmenin zayıflaması, veri gizliliği
+            endişeleri ve enerji tüketimi gibi sürdürülebilirlik soruları.</li>
+        </ul>
+
+        <div class="callout goal">
+          <span class="co-icon">🧭</span>
+          <div><div class="co-title">Doğru zihniyet</div>
+          <p>Yapay zekâyı bir tehdit ya da sihir olarak değil, kararları senin yerine vermeyen ama
+             seçenekleri zenginleştiren bir "yardımcı pilot" (co-pilot) olarak konumlandır. Direksiyonda
+             her zaman insan kalmalıdır.</p></div>
+        </div>
+
+        <h2 id="prompt"><span class="num">4</span>Prompt tasarımı</h2>
+        <p class="lead">İyi bir prompt; <strong>rol</strong>, <strong>bağlam</strong>, <strong>amaç</strong>,
+          <strong>ayrıntı</strong> ve <strong>geri bildirim</strong> içerir. Bu beş unsuru bilerek
+          yazılan bir istem, gelişigüzel yazılmış bir istemden kat kat kaliteli sonuç üretir.</p>
+
+        <h3>Zayıf ve güçlü prompt karşılaştırması</h3>
+        <p>"Hikâye kitabımı nasıl yaygınlaştırırım?" sorusu üzerinden bakalım:</p>
+        <div class="prompt-ex bad">
+          <div class="ph">❌ Zayıf İstem</div>
+          <div class="pb">"Hikâye kitabımı nasıl yaygınlaştırırım?"</div>
+        </div>
+        <div class="prompt-ex good">
+          <div class="ph">✅ Güçlü İstem</div>
+          <div class="pb">"Sen çocuk kitapları alanında 10 yıllık deneyime sahip bir pazarlama
+            danışmanısın. 7-10 yaş grubuna hitap eden, 40 sayfalık bir macera hikâye kitabım var ve
+            bütçem sınırlı. Kitabı okul kütüphaneleri ve ebeveynler arasında yaygınlaştırmak için,
+            biri ücretsiz biri düşük bütçeli olmak üzere 2 somut strateji öner. Her strateji için ilk
+            3 adımı madde madde yaz."</div>
+        </div>
+
+        <h3>RGB formülü: Rol · Görev · Sınır</h3>
+        <p>Karmaşık görevleri hatasız aktarmak için RGB (Role–Goal–Boundary) formülünü kullan:</p>
+        <ul class="bullets">
+          <li><b>R — Role (Rol):</b> Yapay zekânın hangi uzmanlık şapkasıyla konuşacağını belirt.
+            Örn. "Kıdemli bir Fen Bilimleri öğretmenisin."</li>
+          <li><b>G — Goal (Görev):</b> Ne yapılmasını istediğini net biçimde yaz. Örn. "6. sınıf
+            öğrencileri için fotosentez konusunda 5 soruluk bir değerlendirme hazırla."</li>
+          <li><b>B — Boundary (Sınır):</b> Format, ton ve yasak olan şeyleri belirt. Örn. "Sadece
+            tablo formatında yanıt ver, teknik terim kullanma, en fazla 150 kelime yaz."</li>
+        </ul>
+        <div class="code-block">
+          <button class="copy-btn">📋 Kopyala</button>
+          <pre>[ROL] Sen deneyimli bir [Uzmanlık Alanı]'sın.
+[GÖREV] Senden [Yapılacak Görev]'i detaylıca yapmanı istiyorum.
+[SINIR] Bu işlemi yaparken şu kurallara dikkat et:
+- Sadece [Gerekli Format] formatında yanıt ver.
+- Asla gereksiz açıklamalar yapma.
+- Çıktıda [Yasaklı Durum]'dan kaçın.</pre>
+        </div>
+
+        <h3>Adım adım ilerleme ve tersine prompt</h3>
+        <p>Yapay zekânın ilk cevabı nadiren mükemmeldir. Bir sonucu beğendiğin kısımlarıyla onaylayıp
+          eksik kalanı "Şimdi 2. maddeyi gerçek bir örnekle daha detaylı anlat" diyerek geliştirmen,
+          <strong>iteratif (adım adım) sorgulama</strong> olarak adlandırılır. Ayrıca kendi promptunu
+          nasıl yazacağını bilmiyorsan, yapay zekânın kendisine sorabilirsin — buna
+          <strong>tersine prompt (reverse prompt)</strong> denir: "Benim göremediğim eksikler neler?"
+          ya da "Bu konuda ders anlatacak bir öğretmen için ideal bir prompt oluştur" gibi.</p>
+
+        <h3>8 temel prompt tekniği (fotosentez örneğiyle)</h3>
+        <div class="tbl-wrap">
+          <table class="dtbl">
+            <thead><tr><th>Teknik</th><th>Ne işe yarar</th><th>Örnek</th></tr></thead>
+            <tbody>
+              <tr><td><b>1. Sıfır Örnek (Zero-Shot)</b></td><td>Hiçbir örnek/rol vermeden doğrudan sorma</td><td>"Fotosentezi anlat."</td></tr>
+              <tr><td><b>2. Rol Tabanlı (Persona)</b></td><td>Uzmanlık ve ton kazandırma</td><td>"20 yıllık Fen Bilimleri öğretmeni gibi davran, fotosentezi 6. sınıfa anlat."</td></tr>
+              <tr><td><b>3. Bağlamlı Prompt</b></td><td>Hedef kitle/ortam bilgisi ekleme</td><td>"Öğrencilerim konuyu ilk kez öğrenecek, günlük yaşamdan örneklerle açıkla."</td></tr>
+              <tr><td><b>4. Çıktı Formatlı Prompt</b></td><td>Biçimi önceden belirleme</td><td>"Tablo halinde hazırla: Kavram, Açıklama, Örnek."</td></tr>
+              <tr><td><b>5. Az-Örnekli (Few-Shot)</b></td><td>Bir örnek göstererek formatı öğretme</td><td>"Solunum: Enerji elde etme sürecidir." → Aynı yapıda fotosentezi anlat.</td></tr>
+              <tr><td><b>6. Zincirleme Düşünme (CoT)</b></td><td>Adım adım mantık yürütmesini sağlama</td><td>"Önce gerekli şartları, sonra süreci, sonra sonucu açıkla."</td></tr>
+              <tr><td><b>7. Negatif Prompt</b></td><td>İstenmeyeni tanımlama</td><td>"Kimyasal denklem kullanma, teknik terimlerden kaçın."</td></tr>
+              <tr><td><b>8. Tersine Prompt</b></td><td>İdeal promptu yapay zekâya yazdırma</td><td>"6. sınıfa fotosentez anlatacak bir öğretmen için ideal prompt oluştur."</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 id="modeller"><span class="num">5</span>Yapay zekâ modellerinin karşılaştırılması</h2>
+        <p class="lead">Aynı soru, farklı modellere sorulduğunda farklı üslup, derinlik ve doğrulukta
+          cevaplar üretir. Doğru model seçimi, göreve göre değişir.</p>
+        <div class="tbl-wrap">
+          <table class="dtbl">
+            <thead><tr><th>Model</th><th>Geliştirici</th><th>Öne çıktığı alan</th></tr></thead>
+            <tbody>
+              <tr><td><b>ChatGPT</b></td><td>OpenAI</td><td>Genel kullanım, hız, kodlama desteği ve en yaygın eklenti ekosistemi.</td></tr>
+              <tr><td><b>Claude</b></td><td>Anthropic</td><td>Uzun doküman/PDF analizi, akademik düzeyde mantık yürütme ve son derece doğal Türkçe.</td></tr>
+              <tr><td><b>Gemini</b></td><td>Google</td><td>Dev bağlam penceresi, güncel arama entegrasyonu, Google servisleriyle uyum.</td></tr>
+              <tr><td><b>Llama</b></td><td>Meta</td><td>Açık kaynaklı, yerel kurulum ve özelleştirmeye uygun model ailesi.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Modelleri objektif biçimde karşılaştırmak için <strong>LM Arena</strong> gibi bağımsız
+          değerlendirme platformları kullanılabilir; burada metin, arama, kodlama, görsel ve video
+          kategorilerinde modellerin kullanıcı oylarıyla sıralandığı canlı bir lider tablosu bulunur.</p>
+
+        <h3>Uygulamalı egzersiz: aynı içeriği üç modelde üret</h3>
+        <p>Aşağıdaki istemi ChatGPT, Claude ve Gemini'de ayrı ayrı dene ve çıktıları (ders planı, ton,
+          uzunluk, doğruluk açısından) karşılaştır:</p>
+        <div class="code-block">
+          <button class="copy-btn">📋 Kopyala</button>
+          <pre>Sen 15 yıllık bir Fen Bilimleri öğretmenisin. 5. sınıf öğrencileri için "fotosentez"
+konusunda, günlük yaşamdan örnekler içeren, keşfetmeye dayalı bir etkinlik ve 5 soruluk
+bir değerlendirme hazırla. Çıktıyı önce "Etkinlik", sonra "Değerlendirme Soruları"
+başlıkları altında, madde işaretleriyle düzenle.</pre>
+        </div>
+        <div class="grid grid-3" style="margin-top:14px;">
+          <a class="link-card" href="https://chatgpt.com" target="_blank" rel="noopener noreferrer">
+            <div class="lc-top"><span class="lc-title">ChatGPT</span></div>
+            <span class="lc-desc">OpenAI'nin resmi sohbet arayüzü.</span>
+            <span class="lc-cta">chatgpt.com'u aç ↗</span></a>
+          <a class="link-card" href="https://claude.ai" target="_blank" rel="noopener noreferrer">
+            <div class="lc-top"><span class="lc-title">Claude AI</span></div>
+            <span class="lc-desc">Anthropic'in resmi sohbet arayüzü.</span>
+            <span class="lc-cta">claude.ai'ı aç ↗</span></a>
+          <a class="link-card" href="https://gemini.google.com" target="_blank" rel="noopener noreferrer">
+            <div class="lc-top"><span class="lc-title">Google Gemini</span></div>
+            <span class="lc-desc">Google'ın resmi sohbet arayüzü.</span>
+            <span class="lc-cta">gemini.google.com'u aç ↗</span></a>
+        </div>
+        <p style="margin-top:12px;">Modellerin daha kapsamlı bir karşılaştırmasını, güçlü yönlerini ve
+          önerilen kullanım alanlarını <a href="modeller.html" style="color:var(--blue);">AI Modelleri</a>
+          sayfasında bulabilirsin.</p>
+
+        <h2 id="veri"><span class="num">6</span>Eğitim içeriği ve veri analizi uygulamaları</h2>
+        <p class="lead">Yapay zekâ sadece metin üretmez; yüklediğin bir tabloyu okuyup analiz edebilir,
+          grafik çizebilir ve rapor hâline getirebilir.</p>
+
+        <h3>Uygulama A: içerik üretimi</h3>
+        <p>5. sınıf fotosentez konusu için günlük yaşam örnekleri, keşfetmeye dayalı bir etkinlik ve
+          değerlendirme soruları üretme egzersizini bir üstteki bölümde zaten denedin. Aynı yöntemi
+          kendi branşın veya sektörün için farklı bir konuya uygulayabilirsin.</p>
+
+        <h3>Uygulama B: sentetik veri ile analiz</h3>
+        <p>Bu uygulamada 20 öğrenci ve 20 dersten oluşan (gerçek değil, uydurma/sentetik) bir veri
+          seti hazırlanır; ardından bu veri Claude AI'a yüklenerek HTML analiz raporu, grafikler ve
+          Excel çıktısı oluşturulur. Şehir, ders, sınıf ve öğrenci bazında sonuçlar görselleştirilir.</p>
+        <div class="step-list">
+          <div class="step-item"><div class="sn">1</div><div class="st"><b>Sentetik veri oluştur.</b>
+            <p>Yapay zekâya şunu yazdır: "20 hayali öğrenci, 20 ders ve rastgele ama gerçekçi notlardan
+              oluşan bir CSV tablosu üret. Öğrenci adları tamamen uydurma olsun."</p></div></div>
+          <div class="step-item"><div class="sn">2</div><div class="st"><b>Veriyi Claude AI'a yükle.</b>
+            <p>Oluşan CSV/Excel dosyasını claude.ai arayüzüne sürükle-bırak ile yükle.</p></div></div>
+          <div class="step-item"><div class="sn">3</div><div class="st"><b>Analiz komutu ver.</b>
+            <p>"Bu tabloyu incele. En kritik 2 başarı alanını ve iyileştirme önerilerini tespit et,
+              sonuçları bir HTML rapor ve tablo hâlinde sun."</p></div></div>
+          <div class="step-item"><div class="sn">4</div><div class="st"><b>Görselleştir.</b>
+            <p>"Sınıf bazında ortalama notları gösteren bir sütun grafiği ve genel akışı özetleyen bir
+              Mermaid.js şeması ekle."</p></div></div>
+        </div>
+
+        <h2 id="kvkk"><span class="num">7</span>KVKK ve sentetik veri</h2>
+        <div class="callout danger">
+          <span class="co-icon">🔒</span>
+          <div><div class="co-title">Altın kural</div>
+          <p>Gerçek öğrenci, müşteri veya çalışan bilgilerini hiçbir zaman yapay zekâ sistemlerine
+             yüklemeyin. İsim, T.C. kimlik no, not, sağlık bilgisi gibi kişisel veriler bu kapsamdadır.</p></div>
+        </div>
+        <p>Eğitim ve deneme çalışmalarında, yukarıdaki adımda olduğu gibi <strong>sentetik (uydurma)
+          veri</strong> kullanılması önerilir. Veri güvenliği, tek seferlik bir kontrol değil, tüm
+          uygulama sürecinin ayrılmaz bir parçasıdır — bu konuyu Claude Programı'nın son modülü olan
+          <a href="modul-10.html" style="color:var(--blue);">Modül 10: Güvenlik, KVKK, Maliyet ve
+          Sürdürülebilirlik</a>'te çok daha ayrıntılı işleyeceğiz.</p>
+        <p>Türkiye'deki eğitim kurumları için resmi etik ve mevzuat kılavuzlarını
+          <a href="kaynaklar.html" style="color:var(--blue);">Kaynaklar &amp; Mevzuat</a> sayfasında
+          bulabilirsin.</p>
+
+        <h2 id="kazanimlar"><span class="num">8</span>1. Günün temel kazanımları</h2>
+        <div class="checklist">
+          <div class="check-item"><div class="cb"></div><div><b>Etkili ve yapılandırılmış prompt hazırlama</b><p>RGB formülü ve 8 prompt tekniğiyle net, tutarlı istemler yazabiliyorsun.</p></div></div>
+          <div class="check-item"><div class="cb"></div><div><b>Farklı yapay zekâ modellerini göreve göre karşılaştırma</b><p>ChatGPT, Claude ve Gemini'nin hangi işte öne çıktığını biliyorsun.</p></div></div>
+          <div class="check-item"><div class="cb"></div><div><b>Ders planı, ders notu, soru ve Word içeriği üretme</b><p>Kaynak metinden pedagojik olarak uygun sınav ve içerik türetebiliyorsun.</p></div></div>
+          <div class="check-item"><div class="cb"></div><div><b>Sentetik verilerle HTML, Excel ve grafik raporları oluşturma</b><p>Veri yükleyip analiz ettirme ve görselleştirme akışını uygulayabiliyorsun.</p></div></div>
+          <div class="check-item"><div class="cb"></div><div><b>KVKK, etik ve güvenlik ilkelerine uygun çalışma</b><p>Hangi verilerin asla paylaşılmaması gerektiğini biliyorsun.</p></div></div>
+          <div class="check-item"><div class="cb"></div><div><b>Dil modeli ile yapay zekâ ajanı arasındaki farkı kavrama</b><p>Sıradaki günlerde işlenecek ajan ve otomasyon konularına hazırsın.</p></div></div>
+        </div>
+
+        <h2 id="kapanis"><span class="num">9</span>Kapanış: sıradaki adım</h2>
+        <p class="lead">1. Gün, yapay zekâyı yalnızca içerik üreten bir araç olarak değil; doğru
+          yönlendirildiğinde planlama, üretim ve analiz süreçlerini destekleyen kapsamlı bir çalışma
+          ortağı olarak konumlandırdı. Şimdi bu ortak yaklaşımı, gerçek bir yapay zekâ <em>ajanı</em>yla
+          çalışmaya taşıma zamanı.</p>
+        <div class="callout tip">
+          <span class="co-icon">➡️</span>
+          <div><div class="co-title">Sırada ne var?</div>
+          <p>Claude Programı'nın <b>Modül 1: Yapay Zekâ Ajanlarına Giriş ve Doğru Zihniyet</b> bölümü,
+             bugün öğrendiklerinin üzerine "ajan" kavramını inşa ediyor.</p></div>
+        </div>
+      </div>
+
+      <aside class="toc" id="pageToc"></aside>
+    </div>
+  </div>
+
+  <div class="section tight">
+    <div class="container">
+      <div class="pn-nav">
+        <a class="pn-card" href="baslangic.html"><span class="pn-lbl">← Geri</span><span class="pn-title">Başlangıç Rehberi</span></a>
+        <a class="pn-card next" href="modul-1.html"><span class="pn-lbl">Sıradaki →</span><span class="pn-title">Modül 1: Yapay Zekâ Ajanlarına Giriş</span></a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+<script src="js/main.js"></script>
+</body>
+</html>

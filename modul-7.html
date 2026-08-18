@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Modül 7 — Claude Code, Git ve Güvenli Proje Geliştirme | AI Eğitim Kılavuzu</title>
+<meta name="description" content="Claude Code ile kod üretme, düzenleme ve hata ayıklama; Git ile sürüm kontrolü; slash komutları; teknik borç ve profesyonel desteğe geçiş ölçütleri." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body data-page="modul-7">
+<a class="skip-link" href="#main">İçeriğe geç</a>
+<div id="site-header"></div>
+
+<main id="main">
+  <div class="page-head">
+    <div class="container">
+      <span class="eyebrow indigo">📦 Modül 7 / 10</span>
+      <h1>Claude Code, Git ve Güvenli Proje Geliştirme</h1>
+      <p class="page-lead">
+        Programın "üretim" aşamasına giriyoruz. Bu modülde Claude Code ile gerçek kod yazacak, Git ile
+        her değişikliği güvenle kaydedecek ve hatalı bir adımı saniyeler içinde geri alabilecek
+        yetkinliği kazanacaksın.
+      </p>
+      <div class="meta-row">
+        <span class="meta-chip">⏱️ Tahmini süre: 90-120 dakika</span>
+        <span class="meta-chip">🎯 Ön koşul: Modül 2, Modül 3</span>
+        <span class="meta-chip">🧰 İhtiyacın olan: Kurulu Claude Code + Git</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="container two-col">
+      <div class="prose">
+
+        <h2 id="arayuz"><span class="num">1</span>Claude Code arayüzünün ve çalışma yöntemlerinin tanıtılması</h2>
+        <p class="lead">Claude Code, terminalden çalışan bir kod geliştirme ajanıdır. Kullanıcıdan
+          doğal dilde bir görev alır, ilgili dosyaları okur, değişiklik önerir ve — onayınla — bu
+          değişiklikleri gerçek dosyalara uygular.</p>
+
+        <h3>Terminal, Visual Studio Code ve masaüstü üzerinden kullanım</h3>
+        <p>Modül 2'de kurduğun gibi, Claude Code'u üç ortamdan da çalıştırabilirsin: doğrudan
+          terminalden (<code>claude</code> komutuyla), VS Code'un gömülü terminalinden veya (varsa)
+          masaüstü uygulamasının entegre görünümünden. Bu modül boyunca terminal + VS Code
+          kombinasyonu üzerinden ilerleyeceğiz.</p>
+
+        <h2 id="proje-tanitma"><span class="num">2</span>Mevcut bir kod projesini yapay zekâya tanıtma</h2>
+        <p>Var olan bir projenin klasörüne girip <code>claude</code> komutunu çalıştırdığında, Claude
+          Code önce proje yapısını tarayarak neyle çalıştığını (hangi dil, hangi dosyalar) kendiliğinden
+          anlamaya çalışır. Sen de kısaca özetleyerek bu süreci hızlandırabilirsin:</p>
+        <div class="prompt-ex good">
+          <div class="ph">✅ Örnek istem</div>
+          <div class="pb">"Bu proje basit bir öğrenci takip web sitesi. HTML/CSS/JavaScript kullanıyor,
+            veri şu an tarayıcı hafızasında (localStorage) tutuluyor. Önce projeyi incele, kısaca ne
+            iş yaptığını özetle."</div>
+        </div>
+
+        <h3>Birden fazla klasör ve proje üzerinde çalışma</h3>
+        <p>Claude Code'u her zaman üzerinde çalışmak istediğin projenin ana klasöründen başlatmalısın.
+          Aynı anda birden fazla projeyle ilgilenmen gerekiyorsa, her proje için ayrı bir terminal
+          oturumu (veya VS Code penceresi) açman önerilir — bu, bağlamların birbirine karışmasını önler.</p>
+
+        <h2 id="kod-uretimi"><span class="num">3</span>Kod üretme, düzenleme, test etme ve hata ayıklama</h2>
+        <p>Claude Code'a; yeni bir özellik ekletmek, mevcut bir hatayı düzeltmek ya da bir bölümü
+          yeniden düzenlemek (refactor) gibi görevler verebilirsin. Modül 3'te öğrendiğin
+          "brief hazırlama" ve "plan-onay döngüsü" ilkeleri burada tam anlamıyla devreye girer.</p>
+        <div class="prompt-ex good">
+          <div class="ph">✅ Örnek görev</div>
+          <div class="pb">"'index.html' sayfasındaki öğrenci listesi tablosuna bir 'arama kutusu'
+            ekle. Kullanıcı isim yazdıkça tablo anlık filtrelensin. Önce nasıl yapacağını kısaca
+            planla, sonra uygula."</div>
+        </div>
+
+        <h3>Slash komutları ve proje komutları</h3>
+        <p>Claude Code içinde <code>/</code> ile başlayan özel komutlar bulunur — örneğin geçmişi
+          temizlemek, mevcut planı görüntülemek veya proje ayarlarını değiştirmek için kullanılırlar.
+          Kendi projene özel, sık tekrarlanan işlemler için de kendi özel komutlarını tanımlayabilirsin.</p>
+
+        <h2 id="git-temelleri"><span class="num">4</span>Git sisteminin temel çalışma mantığı</h2>
+        <p class="lead"><strong>Git</strong>, kod değişikliklerinin zaman içindeki geçmişini kaydeden
+          bir sürüm kontrol sistemidir — bir nevi projenin "geri al" düğmesi ve zaman makinesidir.</p>
+
+        <h3>Repository, commit, branch ve version kavramları</h3>
+        <div class="tbl-wrap">
+          <table class="dtbl">
+            <thead><tr><th>Terim</th><th>Anlamı</th></tr></thead>
+            <tbody>
+              <tr><td><b>Repository (Repo)</b></td><td>Bir projenin tüm dosyalarının ve değişiklik geçmişinin saklandığı yer.</td></tr>
+              <tr><td><b>Commit</b></td><td>Belirli bir andaki değişikliklerin, açıklayıcı bir notla birlikte kaydedilmesi ("anlık fotoğraf").</td></tr>
+              <tr><td><b>Branch (Dal)</b></td><td>Ana koddan ayrılan, bağımsız denemeler yapabileceğin paralel bir çalışma hattı.</td></tr>
+              <tr><td><b>Version (Sürüm)</b></td><td>Projenin belirli bir commit noktasındaki hâli.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Yapay zekâ ajanıyla Git komutları çalıştırma</h3>
+        <p>Claude Code'dan doğrudan Git komutlarını senin adına çalıştırmasını isteyebilirsin — komutu
+          ezbere bilmen gerekmez, ne yapmak istediğini söylemen yeterlidir.</p>
+        <div class="code-block">
+          <button class="copy-btn">📋 Kopyala</button>
+          <pre># Sık kullanılan temel Git komutları (Claude'a da aynı şekilde yazdırabilirsin):
+
+git init                      # Klasörü bir Git deposu hâline getir
+git status                    # Nelerin değiştiğini göster
+git add .                     # Tüm değişiklikleri kayda hazırla
+git commit -m "İlk sürüm"     # Değişiklikleri açıklamalı olarak kaydet
+git log --oneline             # Kayıt (commit) geçmişini kısaca listele</pre>
+        </div>
+
+        <h3>Değişiklikleri kaydetme ve önceki sürüme dönme</h3>
+        <p>Her anlamlı değişiklik grubundan sonra bir commit almak (Claude'a "şimdi bu değişikliği
+          kaydet" demek yeterlidir), ileride "üç gün önceki hâline dön" diyebilmeni sağlar.</p>
+
+        <h2 id="geri-alma"><span class="num">5</span>Hatalı işlemleri güvenli biçimde geri alma</h2>
+        <div class="callout tip">
+          <span class="co-icon">🛟</span>
+          <div><div class="co-title">Güvenlik ağın: commit almak</div>
+          <p>Düzenli commit alışkanlığı, deneme yapmaktan korkmamanı sağlayan en büyük güvenlik
+             ağıdır. Bir değişiklik işleri bozarsa, Claude'a "son commit'e geri dön" demen yeterlidir.</p></div>
+        </div>
+
+        <h2 id="rutinler"><span class="num">6</span>Lokal ve uzak sunucu üzerinde çalışan rutinler</h2>
+        <p>Geliştirdiğin otomasyonlar iki şekilde çalışabilir: <strong>lokal</strong> (senin
+          bilgisayarında, sadece o açıkken) ya da <strong>uzak sunucuda</strong> (7/24 çalışan bir
+          bulut sunucusunda). Basit, ara sıra çalışan görevler için lokal yeterlidir; sürekli ve
+          kesintisiz çalışması gereken görevler için bir sunucuya taşınması gerekir.</p>
+
+        <h3>API, connector ve zaman tetikleyicili rutinler</h3>
+        <p>Bir rutin üç şekilde tetiklenebilir: bir <strong>API çağrısı</strong> ile (başka bir sistem
+          Claude'u tetikler), bir <strong>connector olayı</strong> ile (örn. yeni bir e-posta geldiğinde)
+          veya bir <strong>zaman tetikleyicisiyle</strong> (Modül 6'daki Schedule gibi, belirli saatte).</p>
+
+        <h2 id="teknik-borc"><span class="num">7</span>Teknik borç ve kontrolsüz kod üretiminin riskleri</h2>
+        <p><strong>Teknik borç</strong>, hızlı ama düzensiz üretilen kodun ileride biriktirdiği
+          "faturadır" — anlaşılması zor, bakımı pahalı, hataya açık bir kod tabanı. Yapay zekâ ile hızlı
+          kod üretmek bu riski artırabilir; bu yüzden düzenli commit almak, kodu okumak (kopyala-yapıştır
+          yapmamak) ve karmaşık kısımları küçük adımlara bölmek (Modül 3) teknik borcu azaltır.</p>
+
+        <h3>Projenin profesyonel geliştiriciye devredilmesi gereken durumlar</h3>
+        <ul class="bullets">
+          <li>Uygulama gerçek kullanıcı ödemesi veya hassas kişisel veri işlemeye başladığında</li>
+          <li>Kullanıcı sayısı/trafik, tek kişinin yönetebileceği ölçeğin üzerine çıktığında</li>
+          <li>Güvenlik açığı şüphesi olduğunda ve bunu bağımsız doğrulayamadığında</li>
+          <li>Yasal uyumluluk (KVKK, sektörel mevzuat) gerektiren bir aşamaya geçildiğinde</li>
+        </ul>
+        <p>Bu durumların hiçbiri "başarısızlık" değildir — tam tersine, projenin büyüdüğünün ve doğru
+          zamanda doğru desteği aradığının bir işaretidir. Bu konuyu Modül 10'da daha da
+          derinleştireceğiz.</p>
+
+        <div class="callout goal" style="margin-top:26px;">
+          <span class="co-icon">🎯</span>
+          <div><div class="co-title">Modül çıktısı</div>
+          <p>Yapay zekâ ajanıyla kontrollü kod geliştirebiliyor, Git ile sürüm takibi yapabiliyor ve
+             hatalardan güvenli biçimde geri dönebiliyorsun.</p></div>
+        </div>
+      </div>
+      <aside class="toc" id="pageToc"></aside>
+    </div>
+  </div>
+
+  <div class="section tight">
+    <div class="container">
+      <div class="pn-nav">
+        <a class="pn-card" href="modul-6.html"><span class="pn-lbl">← Geri</span><span class="pn-title">Modül 6: Zamanlanmış Görevler ve Canlı Paneller</span></a>
+        <a class="pn-card next" href="modul-8.html"><span class="pn-lbl">Sıradaki →</span><span class="pn-title">Modül 8: Uygulama Geliştirme ve Yayınlama</span></a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+<script src="js/main.js"></script>
+</body>
+</html>

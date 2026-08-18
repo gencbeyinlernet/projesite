@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sözlük &amp; SSS — Yapay Zekâ Terimleri Sade Türkçe | AI Eğitim Kılavuzu</title>
+<meta name="description" content="Bu kılavuzda geçen prompt, ajan, MCP, API, terminal, Git gibi tüm teknik terimlerin sade Türkçe açıklamaları ve sık sorulan sorular." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body data-page="sozluk">
+<a class="skip-link" href="#main">İçeriğe geç</a>
+<div id="site-header"></div>
+
+<main id="main">
+  <div class="page-head">
+    <div class="container">
+      <span class="eyebrow indigo">📖 Başvuru Kaynağı</span>
+      <h1>Sözlük &amp; Sık Sorulan Sorular</h1>
+      <p class="page-lead">
+        Bu kılavuzda geçen her teknik terimin sade Türkçe açıklaması burada. Bir kelimeyi
+        anlamadığında paniğe kapılma — muhtemelen aşağıda listelenmiş.
+      </p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="container two-col">
+      <div>
+
+        <h2 style="color:#fff;font-size:20px;margin-bottom:6px;">📚 Sözlük</h2>
+        <p style="color:var(--text-soft);font-size:13.5px;margin-bottom:18px;">Bir terime tıkla, açıklaması genişlesin.</p>
+
+        <h3 style="color:var(--text-mute);font-size:12px;text-transform:uppercase;letter-spacing:.05em;margin:22px 0 10px;">Temel Kavramlar</h3>
+        <div id="glossary-temel"></div>
+
+        <h3 style="color:var(--text-mute);font-size:12px;text-transform:uppercase;letter-spacing:.05em;margin:28px 0 10px;">Prompt ve Model</h3>
+        <div id="glossary-prompt"></div>
+
+        <h3 style="color:var(--text-mute);font-size:12px;text-transform:uppercase;letter-spacing:.05em;margin:28px 0 10px;">Teknik / Geliştirme</h3>
+        <div id="glossary-teknik"></div>
+
+        <h3 style="color:var(--text-mute);font-size:12px;text-transform:uppercase;letter-spacing:.05em;margin:28px 0 10px;">Claude Ekosistemi</h3>
+        <div id="glossary-claude"></div>
+
+        <h3 style="color:var(--text-mute);font-size:12px;text-transform:uppercase;letter-spacing:.05em;margin:28px 0 10px;">Güvenlik ve Hukuk</h3>
+        <div id="glossary-guvenlik"></div>
+
+        <h2 style="color:#fff;font-size:20px;margin:44px 0 6px;">❓ Sık Sorulan Sorular</h2>
+        <div id="faq"></div>
+
+      </div>
+      <aside class="toc">
+        <h4 style="font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--text-mute);margin-bottom:10px;">Hızlı Erişim</h4>
+        <a href="#glossary-temel" style="display:block;padding:7px 9px;color:var(--text-soft);font-weight:600;font-size:13px;">Temel Kavramlar</a>
+        <a href="#glossary-prompt" style="display:block;padding:7px 9px;color:var(--text-soft);font-weight:600;font-size:13px;">Prompt ve Model</a>
+        <a href="#glossary-teknik" style="display:block;padding:7px 9px;color:var(--text-soft);font-weight:600;font-size:13px;">Teknik / Geliştirme</a>
+        <a href="#glossary-claude" style="display:block;padding:7px 9px;color:var(--text-soft);font-weight:600;font-size:13px;">Claude Ekosistemi</a>
+        <a href="#glossary-guvenlik" style="display:block;padding:7px 9px;color:var(--text-soft);font-weight:600;font-size:13px;">Güvenlik ve Hukuk</a>
+        <a href="#faq" style="display:block;padding:7px 9px;color:var(--text-soft);font-weight:600;font-size:13px;">Sık Sorulan Sorular</a>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+<script src="js/main.js"></script>
+<script>
+(function () {
+  function acc(containerId, items) {
+    var el = document.getElementById(containerId);
+    if (!el) return;
+    el.innerHTML = items.map(function (it) {
+      return (
+        '<div class="accordion-item" data-solo>' +
+          '<div class="accordion-head"><span>' + it.q + '</span><span class="car">▾</span></div>' +
+          '<div class="accordion-body"><div class="accordion-body-in">' + it.a + '</div></div>' +
+        '</div>'
+      );
+    }).join("");
+  }
+
+  acc("glossary-temel", [
+    { q: "Yapay Zekâ (AI)", a: "İnsan zekâsına benzer görevleri (öğrenme, muhakeme, karar verme) yerine getirebilen bilgisayar sistemlerinin genel adı." },
+    { q: "Makine Öğrenmesi", a: "Yapay zekâ sistemlerinin sabit kurallarla değil, veriden örüntü öğrenerek çalışmasını sağlayan yöntem." },
+    { q: "Üretken Yapay Zekâ (Generative AI)", a: "Metin, görsel, ses ve kod gibi tamamen yeni içerikler üretebilen yapay zekâ alt dalı. ChatGPT, Claude ve Gemini bu kategoridedir." },
+    { q: "LLM (Büyük Dil Modeli)", a: "Devasa miktarda metinle eğitilmiş, bir sonraki kelimeyi tahmin ederek insan benzeri metin üreten derin öğrenme modeli." },
+    { q: "Yapay Zekâ Asistanı", a: "Bir dil modelini sohbet arayüzüne bağlayan, soru-cevap ve içerik üretimi yapan ama kendi başına dosya/işlem değiştirmeyen sistem." },
+    { q: "Yapay Zekâ Ajanı (AI Agent)", a: "Bir hedefi gerçekleştirmek için kendi başına plan yapan, araç/komut çalıştıran, sonucu kontrol eden gelişmiş yapay zekâ sistemi (örn. Claude Code)." },
+    { q: "Halüsinasyon", a: "Bir yapay zekânın var olmayan bir bilgiyi, kaynağı veya istatistiği kendinden emin bir dille 'uydurması'. Her zaman doğrulanmalıdır." },
+    { q: "İş Akışı (Workflow)", a: "Birden çok adımın zincirleme şekilde, belirli bir sırayla yürütülmesini tanımlayan otomasyon mantığı." }
+  ]);
+
+  acc("glossary-prompt", [
+    { q: "Prompt (İstem)", a: "Yapay zekâya yazdığın talimat veya soru. Ne kadar net ve yapılandırılmışsa, cevap o kadar kaliteli olur." },
+    { q: "RGB Formülü (Role–Goal–Boundary)", a: "Rol, Görev ve Sınır unsurlarını içeren, kaliteli prompt yazmak için kullanılan bir yapı — bkz. 1. Gün." },
+    { q: "Zero-Shot (Sıfır Örnek)", a: "Modele hiçbir örnek veya rol vermeden doğrudan soru sorma tekniği." },
+    { q: "Few-Shot (Az Örnekli)", a: "Modele istediğin formatı öğretmek için bir veya birkaç örnek gösterme tekniği." },
+    { q: "Chain-of-Thought (Zincirleme Düşünme)", a: "Modelin doğrudan sonuca atlamak yerine, adım adım mantık yürütmesini sağlayan istem tekniği." },
+    { q: "Context Window (Bağlam Penceresi)", a: "Bir modelin tek seferde 'hafızasında' tutabildiği metin miktarı. Ne kadar büyükse, o kadar uzun doküman işleyebilir." },
+    { q: "Token", a: "Yapay zekâ modellerinin metni işlerken kullandığı en küçük birim (kabaca bir kelime parçası). API maliyetleri genelde token başına hesaplanır." }
+  ]);
+
+  acc("glossary-teknik", [
+    { q: "Terminal / Komut Satırı (CLI)", a: "Bilgisayara fare yerine yazarak komut verdiğin pencere. Yapay zekâ ajanlarıyla en hızlı çalışma şekli buradan geçer." },
+    { q: "Node.js", a: "JavaScript kodlarının tarayıcı dışında, bilgisayarda çalışmasını sağlayan ortam. Claude Code dâhil birçok araç için gereklidir." },
+    { q: "npm", a: "Node.js ile birlikte gelen, binlerce hazır yazılım paketini tek komutla kurmanı sağlayan paket yöneticisi." },
+    { q: "Git", a: "Kod değişikliklerinin zaman içindeki geçmişini kaydeden sürüm kontrol sistemi — projenin 'geri al' düğmesi." },
+    { q: "Repository (Repo)", a: "Bir projenin tüm dosyalarının ve Git değişiklik geçmişinin saklandığı yer." },
+    { q: "Commit", a: "Belirli bir andaki değişikliklerin, açıklayıcı bir notla birlikte Git'e kaydedilmesi." },
+    { q: "Branch (Dal)", a: "Ana koddan ayrılan, bağımsız deneme yapabileceğin paralel bir çalışma hattı." },
+    { q: "GitHub", a: "Git depolarının internette barındırıldığı, paylaşıldığı ve yönetildiği platform." },
+    { q: "API", a: "İki yazılımın birbiriyle konuşmasını sağlayan arayüz. 'API kullanmak', bir hizmeti kendi uygulamana entegre etmek demektir." },
+    { q: "API Anahtarı", a: "Bir yazılım hizmetine erişim izni veren dijital şifre. Asla paylaşılmamalı, .env dosyasında saklanmalıdır." },
+    { q: ".env Dosyası", a: "API anahtarı gibi gizli bilgilerin, kodun kendisinden ayrı ve güvenli tutulduğu yapılandırma dosyası." },
+    { q: "CRUD", a: "Create-Read-Update-Delete (Ekle-Oku-Güncelle-Sil) — bir uygulamanın veri yönetiminin dört temel işlemi." },
+    { q: "Hosting", a: "Bir uygulamanın dosyalarının internette 7/24 erişilebilir şekilde barındırıldığı sunucu hizmeti." },
+    { q: "Domain", a: "Bir web sitesinin insan tarafından okunabilir adresi (örn. ornek-site.com)." },
+    { q: "Deploy (Yayınlama)", a: "Geliştirilen bir uygulamayı internette herkesin erişebileceği canlı bir adrese taşıma işlemi." },
+    { q: "Teknik Borç", a: "Hızlı ama düzensiz üretilen kodun ileride biriktirdiği bakım/anlama maliyeti." }
+  ]);
+
+  acc("glossary-claude", [
+    { q: "Claude Chat", a: "Claude'un klasik sohbet arayüzü; Projects, Artifacts ve Skills ile genişletilebilir." },
+    { q: "Claude Projects", a: "Birbiriyle ilgili sohbetleri, dosyaları ve talimatları tek çatı altında toplayan kalıcı çalışma alanı." },
+    { q: "Artifact", a: "Claude'un ürettiği kodu/içeriği sohbetin yanında ayrı, canlı çalışan bir pencerede gösteren özellik." },
+    { q: "Skill (Beceri)", a: "Claude'a belirli bir görevi her zaman aynı standartla yapmayı öğreten, yeniden kullanılabilir talimat paketi." },
+    { q: "MCP (Model Context Protocol)", a: "Yapay zekâ modellerinin dış uygulamalarla standart bir yöntemle konuşmasını sağlayan açık protokol." },
+    { q: "Connector (Bağlayıcı)", a: "MCP protokolünü kullanarak Claude ile belirli bir uygulama (örn. Gmail) arasında kurulan hazır bağlantı." },
+    { q: "Plugin (Eklenti)", a: "Birden fazla Skill ve Connector'ü bir arada sunan, tek adımda kurulan paket." },
+    { q: "Claude Cowork", a: "Bilgisayarındaki gerçek klasörlerde çalışan, görev tabanlı Claude modu." },
+    { q: "Claude Code", a: "Terminal/VS Code üzerinden çalışan, gerçek kod yazıp Git ile sürüm kontrolü yapan geliştirme ajanı." },
+    { q: "Claude Design", a: "Kurumsal tasarım sistemleri, prototip ve sunum üretimi için Claude'un görsel çalışma alanı." },
+    { q: "Schedule", a: "Claude'a belirli zamanlarda otomatik çalışacak, tekrarlayan görevler tanımlama özelliği." },
+    { q: "Dispatch", a: "Bilgisayarında çalışan bir Claude görevine, uzaktan (örn. telefondan) komut gönderme özelliği." },
+    { q: "CLAUDE.md", a: "Bir proje klasörüne eklenen ve Claude Code'un otomatik olarak okuyup uyduğu proje talimat dosyası." }
+  ]);
+
+  acc("glossary-guvenlik", [
+    { q: "KVKK", a: "Kişisel Verilerin Korunması Kanunu. Gerçek kişilere ait bilgilerin nasıl korunması gerektiğini düzenleyen Türkiye mevzuatı." },
+    { q: "Kişisel Veri", a: "Kimliği belirli veya belirlenebilir gerçek kişiye ilişkin her türlü bilgi (ad, telefon, e-posta vb.)." },
+    { q: "Özel Nitelikli Veri", a: "Sağlık bilgisi, T.C. kimlik no, biyometrik veri gibi, ekstra korumaya tabi hassas kişisel veri türü." },
+    { q: "Sentetik Veri", a: "Gerçek olmayan ama gerçekçi görünen, eğitim/deneme amaçlı üretilen uydurma veri. KVKK riskini ortadan kaldırır." },
+    { q: "Kimlik Doğrulama (Authentication)", a: "Bir kullanıcının 'kim olduğunu' doğrulayan sistem (kullanıcı adı + şifre gibi)." },
+    { q: "Yetkilendirme (Authorization)", a: "Doğrulanmış bir kullanıcının 'neyi görebileceğini/yapabileceğini' belirleyen kural seti." }
+  ]);
+
+  acc("faq", [
+    { q: "Hiç kod bilmiyorum, bu eğitimi takip edebilir miyim?", a: "Evet. Kılavuz, hiçbir ön bilgi varsaymadan yazıldı. Modül 2 ve 3'teki kurulum ve terminal adımlarını harfiyen takip etmen yeterli." },
+    { q: "Yapay zekâ araçlarının hepsi ücretli mi?", a: "Hayır. ChatGPT, Claude ve Gemini'nin hepsinin ücretsiz (Free) katmanları var; bu program boyunca ücretsiz katmanlarla ilerleyebilirsin. İleri düzey/yoğun kullanım için ücretli planlar Modül 2 ve 10'da anlatılıyor." },
+    { q: "Hangi sırayla ilerlemeliyim?", a: "Başlangıç Rehberi sayfasındaki 12 adımı takip et: önce 1. Gün, sonra Claude Programı'nın modülleri sırayla 1'den 10'a." },
+    { q: "Claude mı, ChatGPT mi kullanmalıyım?", a: "İkisi de değerli; 1. Gün'de karşılaştırmalı deneyeceksin. Bu kılavuzun Claude Programı bölümü özellikle ajan tabanlı otomasyon ve kod geliştirme için Claude'a odaklanıyor, ama öğrendiğin ilkeler diğer modellerde de işine yarar." },
+    { q: "Verilerim güvende mi?", a: "Bu, senin kontrolünde. Gerçek kişisel/kurumsal veri paylaşmadan, Modül 10'da anlatılan güvenlik ilkelerine uyarak çalıştığın sürece riskler büyük ölçüde azalır." },
+    { q: "Bilgisayarım yeterli mi?", a: "Bu programdaki araçların büyük çoğunluğu tarayıcı üzerinden çalışır; özel bir donanım gerekmez. Claude Code gibi kurulum gerektiren araçlar için ise standart bir güncel bilgisayar yeterlidir." },
+    { q: "Windows mu macOS mu fark eder mi?", a: "Hayır, her iki işletim sisteminde de çalışabilirsin. Kurulum adımlarındaki küçük farklar Modül 2'de ayrıca belirtildi." },
+    { q: "Terminalde yanlış bir komut yazarsam bilgisayarım bozulur mu?", a: "Hayır, çoğu yanlış komut sadece bir hata mesajı verir. Silme (rm/del) gibi komutları kullanırken dikkatli olman yeterli; şüphedeysen komutu önce Claude'a sorup ne yaptığını öğrenebilirsin." },
+    { q: "Bir modülü atlayabilir miyim?", a: "Modüller birbirinin üzerine inşa edildiği için sırayla ilerlemen önerilir, ama zaten belirli bir konuda deneyimliysen (örn. Git biliyorsan) o bölümü hızlıca gözden geçirip devam edebilirsin." },
+    { q: "Bu kılavuz güncel kalacak mı?", a: "Yapay zekâ araçları hızla gelişiyor; arayüzlerdeki küçük detaylar zamanla değişebilir. Ancak buradaki temel kavramlar, iş akışları ve güvenlik ilkeleri uzun vadede geçerliliğini korur." }
+  ]);
+})();
+</script>
+</body>
+</html>

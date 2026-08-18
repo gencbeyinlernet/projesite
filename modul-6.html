@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Modül 6 — Zamanlanmış Görevler, Canlı Paneller ve Uzaktan Yönetim | AI Eğitim Kılavuzu</title>
+<meta name="description" content="Schedule ile otomatik çalışan görevler, Live Artifacts ile canlı kontrol panelleri ve Dispatch ile mobil cihazdan uzaktan yönetim." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body data-page="modul-6">
+<a class="skip-link" href="#main">İçeriğe geç</a>
+<div id="site-header"></div>
+
+<main id="main">
+  <div class="page-head">
+    <div class="container">
+      <span class="eyebrow teal">📦 Modül 6 / 10</span>
+      <h1>Zamanlanmış Görevler, Canlı Paneller ve Uzaktan Yönetim</h1>
+      <p class="page-lead">
+        Buraya kadar Claude'a hep sen görev verdin. Bu modülde görevlerin <em>kendiliğinden</em>,
+        belirlediğin zamanlarda çalışmasını sağlıyoruz — ve sonuçları canlı panellerle her an
+        görüntülenebilir hâle getiriyoruz.
+      </p>
+      <div class="meta-row">
+        <span class="meta-chip">⏱️ Tahmini süre: 60-90 dakika</span>
+        <span class="meta-chip">🎯 Ön koşul: Modül 5</span>
+        <span class="meta-chip">🧰 İhtiyacın olan: Claude hesabı, bağlı en az bir Connector</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="container two-col">
+      <div class="prose">
+
+        <h2 id="schedule"><span class="num">1</span>Schedule özelliğinin çalışma mantığı</h2>
+        <p class="lead"><strong>Schedule (Zamanlanmış Görevler)</strong>, Claude'a "bu görevi her
+          Pazartesi sabah 08:00'de otomatik çalıştır" gibi tekrarlayan talimatlar vermeni sağlar.
+          Sen uyurken ya da başka işlerle uğraşırken görev arka planda tamamlanır ve sonuç seni
+          bekliyor olur.</p>
+
+        <h3>Günlük, haftalık ve aylık görev oluşturma</h3>
+        <div class="tbl-wrap">
+          <table class="dtbl">
+            <thead><tr><th>Sıklık</th><th>Örnek kullanım</th></tr></thead>
+            <tbody>
+              <tr><td><b>Günlük</b></td><td>"Her sabah 07:30'da gelen kutumu özetle, önemli e-postaları işaretle."</td></tr>
+              <tr><td><b>Haftalık</b></td><td>"Her Cuma 17:00'de haftalık ilerleme raporunu hazırla."</td></tr>
+              <tr><td><b>Aylık</b></td><td>"Her ayın 1'inde, önceki ayın gider tablosunu özetleyip gönder."</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Zamanlanmış görevleri klasörlerle ilişkilendirme</h3>
+        <p>Bir zamanlanmış görevi, Modül 5'te bağladığın bir Cowork klasörüyle eşleştirebilirsin —
+          örneğin "her gün 'Gelen Faturalar' klasörünü kontrol et, yeni dosya varsa sınıflandır."</p>
+
+        <h2 id="otomasyonlar"><span class="num">2</span>Takvim, e-posta ve dosya bağlantılı otomasyonlar</h2>
+        <p>Bağladığın Connector'lerle (Modül 5) birleştirildiğinde Schedule çok daha güçlü hâle gelir.
+          Aşağıda gerçek hayatta sık kullanılan dört otomasyon örneği var.</p>
+
+        <div class="grid grid-2">
+          <div class="card-flat"><b style="color:#fff;">📄 PDF belgelerini toplu adlandırma ve sınıflandırma</b>
+            <p style="font-size:12.5px;color:var(--text-soft);margin-top:6px;">"İndirilenler" klasörüne düşen taranmış belgeleri her gece tarih ve içerik türüne göre otomatik olarak yeniden adlandır ve doğru alt klasöre taşı.</p></div>
+          <div class="card-flat"><b style="color:#fff;">📊 Excel dosyalarını okuyarak otomatik rapor oluşturma</b>
+            <p style="font-size:12.5px;color:var(--text-soft);margin-top:6px;">Her hafta güncellenen bir Excel tablosunu okuyup, öne çıkan değişiklikleri özetleyen kısa bir rapor üret.</p></div>
+          <div class="card-flat"><b style="color:#fff;">🧾 Fatura ve müşteri takip otomasyonları</b>
+            <p style="font-size:12.5px;color:var(--text-soft);margin-top:6px;">Ödeme tarihi yaklaşan faturaları tespit edip hatırlatma taslağı e-postası hazırla (gönderimi manuel onaya bırakmak daha güvenlidir).</p></div>
+          <div class="card-flat"><b style="color:#fff;">🔍 Periyodik dosya ve veri kontrolleri</b>
+            <p style="font-size:12.5px;color:var(--text-soft);margin-top:6px;">Belirli bir klasörde beklenmedik bir dosya değişikliği veya eksik veri olup olmadığını her gün otomatik kontrol et.</p></div>
+        </div>
+
+        <h2 id="live-artifacts"><span class="num">3</span>Live Artifacts ile canlı ve etkileşimli paneller oluşturma</h2>
+        <p class="lead">Modül 4'te öğrendiğin Artifacts, statik bir çıktıydı. <strong>Live
+          Artifacts</strong> ise bağlı olduğu veri kaynağı her güncellendiğinde kendini otomatik
+          tazeleyen, canlı çalışan bir panele dönüşür.</p>
+
+        <h3>Bağlayıcılardan anlık veri alan arayüzler geliştirme</h3>
+        <p>Örneğin bağlı bir Excel/Google Sheet'ten canlı veri çeken bir Live Artifact oluşturursan,
+          kaynak tablo değiştiğinde panel de otomatik güncellenir — manuel "yenile" yapmana gerek
+          kalmaz.</p>
+
+        <h3>Takip paneli, kontrol paneli ve mini ERP örnekleri</h3>
+        <ul class="bullets">
+          <li><b>Öğrenci takip paneli:</b> Devamsızlık, ödev teslim durumu ve genel başarı ortalamasını
+            tek ekranda gösteren bir panel.</li>
+          <li><b>Proje kontrol paneli:</b> Aktif görevlerin durumunu (yapılıyor/bekliyor/tamamlandı)
+            görselleştiren bir yönetim ekranı.</li>
+          <li><b>Mini ERP örneği:</b> Stok seviyesi, sipariş durumu ve gelir özetini bir araya getiren
+            küçük işletme kontrol paneli.</li>
+        </ul>
+
+        <h2 id="dispatch"><span class="num">4</span>Dispatch özelliğinin kullanılması</h2>
+        <p class="lead"><strong>Dispatch</strong>, bilgisayarında çalışan bir Claude görevine, o an
+          bilgisayarının başında olmasan bile komut göndermeni sağlar.</p>
+
+        <h3>Mobil cihazdan bilgisayardaki görevlere komut gönderme</h3>
+        <div class="prompt-ex good">
+          <div class="ph">✅ Örnek kullanım senaryosu</div>
+          <div class="pb">Okuldan çıkarken telefonundan Claude'a "bilgisayarımdaki Cowork görevini
+            şimdi çalıştır ve raporu e-postama gönder" komutunu gönderirsin; eve vardığında rapor
+            zaten hazırdır.</div>
+        </div>
+
+        <h3>Bilgisayar uyku modu ve uzaktan çalışma izinleri</h3>
+        <div class="callout warn">
+          <span class="co-icon">⚠️</span>
+          <div><div class="co-title">Bilmen gereken kısıtlama</div>
+          <p>Uzaktan tetiklenen bir görevin çalışabilmesi için bilgisayarının açık ve internete bağlı
+             olması (uyku/kapalı modda değil) gerekir. Kritik zamanlanmış görevler için bilgisayarının
+             güç ayarlarını buna göre düzenlemen gerekebilir.</p></div>
+        </div>
+
+        <div class="callout goal" style="margin-top:26px;">
+          <span class="co-icon">🎯</span>
+          <div><div class="co-title">Modül çıktısı</div>
+          <p>Belirlenen zamanlarda otomatik çalışan görevler ve verileri canlı olarak gösteren
+             etkileşimli yönetim panelleri geliştirebiliyorsun.</p></div>
+        </div>
+      </div>
+      <aside class="toc" id="pageToc"></aside>
+    </div>
+  </div>
+
+  <div class="section tight">
+    <div class="container">
+      <div class="pn-nav">
+        <a class="pn-card" href="modul-5.html"><span class="pn-lbl">← Geri</span><span class="pn-title">Modül 5: Bağlayıcılar, MCP ve Cowork</span></a>
+        <a class="pn-card next" href="modul-7.html"><span class="pn-lbl">Sıradaki →</span><span class="pn-title">Modül 7: Claude Code, Git ve Güvenli Geliştirme</span></a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+<script src="js/main.js"></script>
+</body>
+</html>

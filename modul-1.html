@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Modül 1 — Yapay Zekâ Ajanlarına Giriş ve Doğru Zihniyet | AI Eğitim Kılavuzu</title>
+<meta name="description" content="Dil modeli, asistan ve ajan arasındaki fark, Claude ekosistemine genel bakış, halüsinasyon riski ve yapay zekânın hangi işlerde kullanılıp kullanılmaması gerektiği." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body data-page="modul-1">
+<a class="skip-link" href="#main">İçeriğe geç</a>
+<div id="site-header"></div>
+
+<main id="main">
+  <div class="page-head">
+    <div class="container">
+      <span class="eyebrow">📦 Modül 1 / 10</span>
+      <h1>Yapay Zekâ Ajanlarına Giriş ve Doğru Zihniyet</h1>
+      <p class="page-lead">
+        Claude Programı'nın ilk durağı. Bu modülde, "sohbet botu" ile "görev gerçekleştiren yapay zekâ
+        ajanı" arasındaki farkı netleştiriyoruz, Claude ekosistemine genel bir bakış atıyoruz ve
+        programın tamamında bize rehberlik edecek doğru zihniyeti kuruyoruz.
+      </p>
+      <div class="meta-row">
+        <span class="meta-chip">⏱️ Tahmini süre: 45-60 dakika</span>
+        <span class="meta-chip">🎯 Ön koşul: 1. Gün: Temeller</span>
+        <span class="meta-chip">🧰 İhtiyacın olan: Sadece bir tarayıcı</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="container two-col">
+      <div class="prose">
+
+        <h2 id="kavramlar"><span class="num">1</span>Dil modeli, asistan ve ajan: üç farklı kavram</h2>
+        <p class="lead">Bu üç terim sıkça birbirinin yerine kullanılıyor ama aralarında önemli bir
+          fark var. Bu farkı anlamak, Claude'dan doğru beklentiyle doğru sonucu almanı sağlayacak.</p>
+        <div class="tbl-wrap">
+          <table class="dtbl">
+            <thead><tr><th>Kavram</th><th>Ne yapar?</th><th>Örnek</th></tr></thead>
+            <tbody>
+              <tr><td><b>Dil Modeli (LLM)</b></td><td>Metni anlar ve metin üretir; kendi başına hiçbir işlem yapamaz, sadece "beyin"dir.</td><td>Claude'un arkasındaki model (örn. Claude Opus/Sonnet)</td></tr>
+              <tr><td><b>Yapay Zekâ Asistanı</b></td><td>Dil modelini bir sohbet arayüzüne bağlar; soru sorabilir, metin/kod üretebilir ama genelde senin ekranını, dosyalarını değiştiremez.</td><td>Claude Chat'te normal bir sohbet</td></tr>
+              <tr><td><b>Yapay Zekâ Ajanı</b></td><td>Bir hedefi gerçekleştirmek için kendi başına <em>plan yapar</em>, <em>araç/komut çalıştırır</em>, sonucu kontrol eder ve gerekirse adımı tekrarlar.</td><td>Claude Code'un senin için dosya oluşturması, terminalde komut çalıştırması</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Kısacası: <strong>bir asistana soru sorarsın, bir ajana görev verirsin.</strong> Asistan sana
+          bir cevap yazar; ajan ise o cevabı gerçek dünyada (dosyanda, tarayıcında, e-postanda) uygular.</p>
+
+        <h2 id="fark"><span class="num">2</span>Sohbet botu ile görev gerçekleştiren ajan arasındaki fark</h2>
+        <p>Bir sohbet botuna "Bana bir haftalık ders programı öner" dediğinde, sana metin hâlinde bir
+          öneri sunar — bunu takvimine <em>senin</em> eklemen gerekir. Bir ajana aynı görevi verdiğinde
+          ise (doğru bağlantılar kurulduysa) ajan doğrudan Google Takvim'ine erişip etkinlikleri kendisi
+          oluşturabilir, çakışmaları kontrol edebilir ve sana yalnızca sonucu raporlayabilir.</p>
+        <div class="callout info">
+          <span class="co-icon">🔁</span>
+          <div><div class="co-title">Ajanların temel döngüsü</div>
+          <p><b>Algıla → Planla → Uygula → Doğrula → Raporla.</b> Bir ajan önce mevcut durumu (dosyalar,
+            veriler) algılar, bir plan kurar, planı adım adım uygular, sonucu kendi kendine kontrol
+            eder ve son olarak sana ne yaptığını özetler.</p></div>
+        </div>
+
+        <h2 id="claude-ekosistem"><span class="num">3</span>Claude ekosistemine genel bakış</h2>
+        <p class="lead">Anthropic'in Claude ekosistemi dört ana bileşenden oluşur; programın geri
+          kalanı bu dördünü sırayla derinlemesine işleyecek.</p>
+        <div class="grid grid-2">
+          <div class="card-flat"><div class="icon-bubble">💬</div><h3 style="font-size:14.5px;color:#fff;margin-top:10px;">Claude Chat</h3>
+            <p style="font-size:12.5px;color:var(--text-soft);margin-top:6px;">Klasik sohbet arayüzü; Projects, Artifacts ve Skills ile kalıcı, özelleştirilebilir çalışma alanları sunar. (Modül 4)</p></div>
+          <div class="card-flat"><div class="icon-bubble">🗂️</div><h3 style="font-size:14.5px;color:#fff;margin-top:10px;">Claude Cowork</h3>
+            <p style="font-size:12.5px;color:var(--text-soft);margin-top:6px;">Bilgisayarındaki klasörlere bağlanıp dosya/tablo analiz eden, düzenleyen görev tabanlı çalışma modu. (Modül 5-6)</p></div>
+          <div class="card-flat"><div class="icon-bubble">💻</div><h3 style="font-size:14.5px;color:#fff;margin-top:10px;">Claude Code</h3>
+            <p style="font-size:12.5px;color:var(--text-soft);margin-top:6px;">Terminal/VS Code üzerinden çalışan, gerçek kod yazıp Git ile sürüm kontrolü yapan geliştirme ajanı. (Modül 7-8)</p></div>
+          <div class="card-flat"><div class="icon-bubble">🎨</div><h3 style="font-size:14.5px;color:#fff;margin-top:10px;">Claude Design</h3>
+            <p style="font-size:12.5px;color:var(--text-soft);margin-top:6px;">Kurumsal tasarım sistemleri, prototip ve sunum üretimi için görsel çalışma alanı. (Modül 9)</p></div>
+        </div>
+        <div class="grid grid-2" style="margin-top:14px;">
+          <a class="link-card" href="https://claude.ai" target="_blank" rel="noopener noreferrer">
+            <div class="lc-top"><span class="lc-title">Claude AI (Chat)</span></div>
+            <span class="lc-desc">Resmi Claude sohbet ve proje arayüzü.</span><span class="lc-cta">claude.ai'ı aç ↗</span></a>
+          <a class="link-card" href="https://docs.claude.com" target="_blank" rel="noopener noreferrer">
+            <div class="lc-top"><span class="lc-title">Claude Resmi Dokümantasyon</span></div>
+            <span class="lc-desc">Tüm Claude ürünlerinin güncel, birinci el kaynağı.</span><span class="lc-cta">docs.claude.com'u aç ↗</span></a>
+        </div>
+
+        <h2 id="dogrulama"><span class="num">4</span>Yapay zekâ tarafından üretilen sonuçları doğrulama sorumluluğu</h2>
+        <p>Bir ajan senin adına bir dosya oluşturduğunda ya da bir e-posta gönderdiğinde, <strong>son
+          sorumluluk her zaman kullanıcıdadır.</strong> Ajan "yaptım" dediği için işin doğru yapıldığı
+          anlamına gelmez — özellikle geri dönüşü zor işlemlerde (silme, gönderme, ödeme, yayınlama)
+          sonucu mutlaka kontrol et.</p>
+        <div class="callout warn">
+          <span class="co-icon">🧪</span>
+          <div><div class="co-title">Halüsinasyon, yanlış bilgi ve eksik işlem riskleri</div>
+          <p>Bir dil modeli bazen var olmayan bir dosya yolunu, API'yi ya da istatistiği kendinden emin
+            bir dille "uydurabilir" (halüsinasyon). Bir ajan ise bazen bir görevi <em>kısmen</em>
+            tamamlayıp bunu fark etmeden "bitti" diyebilir. Bu yüzden kritik görevlerden sonra çıktıyı
+            gözden geçirmek bir seçenek değil, bir zorunluluktur.</p></div>
+        </div>
+
+        <h2 id="gorev-alani"><span class="num">5</span>Kullanıcının uzmanlığı ile ajanın görev alanının belirlenmesi</h2>
+        <p>En verimli çalışma şekli, <strong>senin uzmanlığın</strong> ile <strong>ajanın hız ve
+          ölçeği</strong>nin birleştiği noktadır. Sen doğru soruyu sorar, sonucu değerlendirir ve son
+          kararı verirsin; ajan ise tekrar eden, zaman alan ve büyük hacimli işleri senin için yürütür.
+          Görev alanını netleştirmek için kendine şunu sor: <em>"Bu kararı bir yapay zekâ hatalı verirse
+          sonucu ne kadar ciddi olur?"</em> Ne kadar ciddiyse, insan denetimi o kadar sıkı olmalı.</p>
+
+        <h2 id="ne-zaman"><span class="num">6</span>Hangi işlerde yapay zekâ kullanılmalı, hangi işlerde kullanılmamalı?</h2>
+        <div class="grid grid-2">
+          <div class="card-flat" style="border-color:rgba(74,222,128,.35);">
+            <b style="color:var(--green);">✓ Uygun olduğu işler</b>
+            <ul class="bullets" style="margin-top:10px;">
+              <li>Taslak metin, e-posta, sunu ve rapor üretimi</li>
+              <li>Büyük miktarda veriyi özetleme ve sınıflandırma</li>
+              <li>Tekrarlayan dosya işleme, adlandırma, biçimlendirme</li>
+              <li>Kod yazımı, hata ayıklama ve dokümantasyon</li>
+              <li>Beyin fırtınası ve alternatif senaryo üretme</li>
+            </ul>
+          </div>
+          <div class="card-flat" style="border-color:rgba(251,113,133,.35);">
+            <b style="color:var(--rose);">✗ Dikkatli olunması / insan onayı gereken işler</b>
+            <ul class="bullets" style="margin-top:10px;">
+              <li>Nihai tıbbi, hukuki veya finansal kararlar</li>
+              <li>Gerçek kişisel/kurumsal verilerin işlenmesi (bkz. KVKK — Modül 10)</li>
+              <li>Geri dönüşü olmayan işlemler (silme, para transferi, toplu e-posta)</li>
+              <li>Kimlik doğrulama ve güvenlik kararları</li>
+              <li>Kaynağı doğrulanmamış istatistik veya alıntıların yayınlanması</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="callout goal" style="margin-top:26px;">
+          <span class="co-icon">🎯</span>
+          <div><div class="co-title">Modül çıktısı</div>
+          <p>Bu modülü tamamladığında; sohbet botu ile görev gerçekleştiren yapay zekâ ajanı arasındaki
+             farkı açıklayabilecek ve hangi işte hangi yaklaşımı kullanman gerektiğine karar
+             verebileceksin.</p></div>
+        </div>
+      </div>
+      <aside class="toc" id="pageToc"></aside>
+    </div>
+  </div>
+
+  <div class="section tight">
+    <div class="container">
+      <div class="pn-nav">
+        <a class="pn-card" href="gun-1.html"><span class="pn-lbl">← Geri</span><span class="pn-title">1. Gün: Temeller</span></a>
+        <a class="pn-card next" href="modul-2.html"><span class="pn-lbl">Sıradaki →</span><span class="pn-title">Modül 2: Kurulum ve Çalışma Ortamı</span></a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+<script src="js/main.js"></script>
+</body>
+</html>

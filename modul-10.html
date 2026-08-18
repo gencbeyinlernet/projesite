@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Modül 10 — Güvenlik, KVKK, Maliyet ve Sürdürülebilirlik | AI Eğitim Kılavuzu</title>
+<meta name="description" content="Hangi veriler yapay zekâya verilebilir, API anahtarı güvenliği, maliyet yönetimi, teknik borç ve final projesiyle programı tamamlama." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body data-page="modul-10">
+<a class="skip-link" href="#main">İçeriğe geç</a>
+<div id="site-header"></div>
+
+<main id="main">
+  <div class="page-head">
+    <div class="container">
+      <span class="eyebrow teal">📦 Modül 10 / 10 — Final</span>
+      <h1>Güvenlik, KVKK, Maliyet ve Sürdürülebilirlik</h1>
+      <p class="page-lead">
+        Programın kapanış modülü. Buraya kadar üretmeyi öğrendin; şimdi ürettiğini
+        <strong>güvenle, sorumlu bir şekilde ve sürdürülebilir</strong> biçimde nasıl yöneteceğini
+        öğrenerek bir final projesiyle programı taçlandırıyorsun.
+      </p>
+      <div class="meta-row">
+        <span class="meta-chip">⏱️ Tahmini süre: 90-120 dakika</span>
+        <span class="meta-chip">🎯 Ön koşul: Modül 1-9</span>
+        <span class="meta-chip">🏁 Bu modül final projesini içerir</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="container two-col">
+      <div class="prose">
+
+        <h2 id="hangi-veri"><span class="num">1</span>Yapay zekâ ajanlarına hangi verilerin verilebileceği</h2>
+        <p class="lead">Bir bilgiyi paylaşmadan önce kendine şunu sor: <em>"Bu bilgi yanlışlıkla
+          herkese açık hâle gelseydi, kim zarar görürdü?"</em> Cevap "gerçek bir kişi" ise, o veriyi
+          asla ham/gerçek hâliyle bir yapay zekâ sohbet arayüzüne yükleme.</p>
+
+        <h3>Kişisel veri, özel nitelikli veri ve kurumsal veri ayrımı</h3>
+        <div class="tbl-wrap">
+          <table class="dtbl">
+            <thead><tr><th>Veri türü</th><th>Örnek</th><th>Risk seviyesi</th></tr></thead>
+            <tbody>
+              <tr><td><b>Kişisel veri</b></td><td>Ad-soyad, telefon, e-posta, adres</td><td>Orta-Yüksek</td></tr>
+              <tr><td><b>Özel nitelikli veri</b></td><td>Sağlık bilgisi, T.C. kimlik no, biyometrik veri, din/etnik köken</td><td>Çok Yüksek</td></tr>
+              <tr><td><b>Kurumsal veri</b></td><td>İç yazışmalar, finansal raporlar, ticari sır</td><td>Yüksek</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>KVKK kapsamında veri sorumlusunun yükümlülükleri</h3>
+        <p><strong>KVKK (Kişisel Verilerin Korunması Kanunu)</strong> çerçevesinde, kişisel veri
+          işleyen herkes ("veri sorumlusu") bu veriyi hukuka uygun, amaçla sınırlı ve güvenli
+          şekilde işlemekle yükümlüdür. Bir yapay zekâ hizmetine veri yüklemek de bir "işleme"
+          faaliyetidir — bu yüzden gerçek veri paylaşmadan önce kurumunun KVKK politikasını mutlaka
+          kontrol et.</p>
+
+        <h3>Müşteri ve öğrenci verilerinin korunması</h3>
+        <p>1. Gün'de öğrendiğin <strong>sentetik veri</strong> yöntemini hatırla: gerçek isim, not
+          veya iletişim bilgisi yerine uydurma ama gerçekçi veri kullanmak, tüm bu riskleri sıfıra
+          indirir ve öğrenme/deneme sürecini hiçbir şekilde kısıtlamaz.</p>
+
+        <div class="callout danger">
+          <span class="co-icon">⚠️</span>
+          <div><div class="co-title">Gizli bilgilerin yapay zekâ sistemlerine aktarılmasının riskleri</div>
+          <p>Şirket sırları, yayınlanmamış finansal veriler veya üçüncü şahıslara ait gizli bilgiler,
+             hizmet şartlarına ve veri işleme politikasına bakılmaksızın gereksiz risk taşır. "Gerekli
+             mi?" sorusunu her seferinde sor.</p></div>
+        </div>
+
+        <h2 id="api-guvenlik"><span class="num">2</span>API anahtarlarının güvenli şekilde saklanması</h2>
+        <p class="lead">Bir <strong>API anahtarı</strong>, bir yazılım hizmetine erişim izni veren
+          dijital bir şifredir. Kim bu anahtara sahipse, senin adına o hizmeti kullanabilir —
+          bazen senin faturana yansıyacak şekilde.</p>
+
+        <h3>.env dosyası ve ortam değişkenleri</h3>
+        <p>API anahtarlarını asla doğrudan kod dosyalarının içine yazma. Bunun yerine
+          <code>.env</code> adlı ayrı bir dosyada sakla ve bu dosyayı <code>.gitignore</code>
+          listesine ekleyerek GitHub'a yüklenmesini engelle.</p>
+        <div class="code-block">
+          <button class="copy-btn">📋 Kopyala</button>
+          <pre># .env dosyası örneği (bu dosya ASLA GitHub'a yüklenmemeli!)
+SUPABASE_URL="https://proje-adin.supabase.co"
+SUPABASE_KEY="buraya-gizli-anahtarin-gelir"
+
+# .gitignore dosyasına eklenmesi gereken satır:
+.env</pre>
+        </div>
+        <div class="callout tip">
+          <span class="co-icon">✅</span>
+          <div><div class="co-title">Basit kontrol</div>
+          <p>Claude Code'a "bu projede .env dosyasının .gitignore içinde olduğunu ve hiçbir anahtarın
+             kod içine gömülü olmadığını kontrol et" diyerek hızlıca doğrulatabilirsin.</p></div>
+        </div>
+
+        <h3>Yetkilendirme ve erişim kontrolü</h3>
+        <p>Modül 5'te bağladığın her Connector'e ve Modül 8'de kurduğun her veritabanına, sadece
+          <em>gerçekten ihtiyaç duyduğu</em> minimum yetkiyi ver — buna "en az yetki ilkesi" denir.</p>
+
+        <h2 id="izinler"><span class="num">3</span>Yapay zekâ ajanına otomatik izin verilebilecek işlemler</h2>
+        <div class="grid grid-2">
+          <div class="card-flat" style="border-color:rgba(74,222,128,.35);">
+            <b style="color:var(--green);">✓ Otomatik izin uygun</b>
+            <ul class="bullets" style="margin-top:10px;">
+              <li>Dosya okuma, özetleme, sınıflandırma</li>
+              <li>Taslak metin/e-posta oluşturma (gönderme değil)</li>
+              <li>Rapor ve grafik üretimi</li>
+              <li>Test ortamında kod değişikliği</li>
+            </ul>
+          </div>
+          <div class="card-flat" style="border-color:rgba(245,184,78,.35);">
+            <b style="color:var(--amber);">⏸ İnsan onayı gereken</b>
+            <ul class="bullets" style="margin-top:10px;">
+              <li>E-posta/mesaj gönderme</li>
+              <li>Dosya veya kayıt silme</li>
+              <li>Canlı (production) ortama yayın yapma</li>
+              <li>Ödeme veya finansal işlem başlatma</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>Kritik işlemlerde insan onayı kullanılması</h3>
+        <p>Geri dönüşü zor olan her işlemde, ajanın "uygula" adımından önce senden onay istemesini
+          sağla (Modül 3'teki plan-onay döngüsünü hatırla). Bu tek alışkanlık, olası hataların
+          büyük çoğunluğunu geri dönülebilir hâle getirir.</p>
+
+        <h2 id="sunucu-guvenlik"><span class="num">4</span>Sunucu güvenliği ve veri yedekleme stratejileri</h2>
+        <p><strong>Sunucu sertleştirme (hardening)</strong>, bir sunucunun varsayılan, saldırıya
+          açık ayarlarının güvenli hâle getirilmesi anlamına gelir: gereksiz servisleri kapatma,
+          güçlü şifreler/anahtarlar kullanma ve yazılımları güncel tutma gibi temel adımlar. Aynı
+          şekilde, veritabanı ve dosyaların düzenli (örn. haftalık) otomatik yedeklenmesi, bir
+          felaket anında işini kurtaran en ucuz sigortadır.</p>
+
+        <h2 id="maliyet"><span class="num">5</span>Abonelik, token ve API maliyetleri</h2>
+        <p class="lead">Yapay zekâ araçlarının çoğu iki şekilde ücretlendirilir: sabit
+          <strong>abonelik</strong> (Free/Pro/Max gibi, Modül 2'de gördün) ya da kullanım başına
+          <strong>token</strong> bazlı API ücreti.</p>
+        <div class="tbl-wrap">
+          <table class="dtbl">
+            <thead><tr><th>Maliyet kalemi</th><th>Ne zaman devreye girer</th></tr></thead>
+            <tbody>
+              <tr><td><b>Abonelik (Pro/Max)</b></td><td>Claude Chat ve Claude Code'u yoğun kullandığında</td></tr>
+              <tr><td><b>API token ücreti</b></td><td>Kendi uygulamana Claude'u gömdüğünde (kullandıkça öde)</td></tr>
+              <tr><td><b>Sunucu / hosting</b></td><td>Uygulaman büyüyüp ücretsiz katmanların limitini aştığında</td></tr>
+              <tr><td><b>Domain</b></td><td>Kendi alan adını (örn. .com) satın aldığında, genelde yıllık</td></tr>
+              <tr><td><b>Veritabanı</b></td><td>Supabase/Firebase'in ücretsiz katman sınırını (satır/depolama) aştığında</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>İşe uygun model ve araç seçimi</h3>
+        <p>Basit bir görev için en pahalı modeli kullanmak gereksiz maliyet yaratır; karmaşık bir
+          görev için ucuz/hızlı modeli kullanmak ise hatalı sonuç riskini artırır. Görevin
+          karmaşıklığına göre model seçmeyi bir alışkanlık hâline getir (bkz. Modül 2).</p>
+
+        <h3>Her görevin terminal veya ajanla yapılmaması gerektiği durumlar</h3>
+        <p>Bazen bir işi elle, iki dakikada yapmak; onu bir ajana anlatıp doğrulamaktan daha
+          hızlıdır. Otomasyon, ancak <em>tekrar eden</em> ve <em>zaman alan</em> işlerde gerçek
+          değer üretir — her küçük işi otomatikleştirmeye çalışmak zaman kaybettirebilir.</p>
+
+        <h2 id="surdurulebilirlik"><span class="num">6</span>Teknik borç, bakım ve sürdürülebilirlik</h2>
+        <p>Modül 7'de tanıdığın teknik borç kavramını hatırla: hızlı üretilen ama düzenli
+          bakılmayan bir uygulama, zamanla yönetilmesi zor bir yüke dönüşür.</p>
+
+        <h3>Çalışan ancak yönetilemeyen uygulamaların oluşturduğu riskler</h3>
+        <p>"Çalışıyor" ile "güvenli ve sürdürülebilir" aynı şey değildir. Kimsenin anlamadığı,
+          dokümante edilmemiş bir uygulama; küçük bir güncelleme ihtiyacında bile büyük bir soruna
+          dönüşebilir.</p>
+
+        <h3>Profesyonel yazılım desteğine geçiş ölçütleri</h3>
+        <p>Modül 7'de listelenen ölçütleri (gerçek ödeme akışı, büyüyen kullanıcı sayısı, hassas
+          veri, güvenlik şüphesi) tekrar gözden geçir — bu işaretlerden biri belirdiğinde,
+          profesyonel bir yazılımcı ya da ajansla çalışmayı değerlendirmek doğru bir karardır, bir
+          geri adım değil.</p>
+
+        <h3>Proje dokümantasyonu ve sürdürülebilirlik planı</h3>
+        <p>Her projenin yanında kısa bir "READM E" niteliğinde not bulunmalı: uygulama ne işe
+          yarıyor, hangi servisleri kullanıyor, kim sorumlu, nasıl güncellenir. Bunu hazırlamayı da
+          Claude Code'a yaptırabilirsin: "Bu projenin ne yaptığını, hangi servisleri kullandığını ve
+          nasıl çalıştırılacağını anlatan bir README.md dosyası oluştur."</p>
+
+        <h2 id="final"><span class="num">7</span>Final uygulaması</h2>
+        <div class="callout goal">
+          <span class="co-icon">🏁</span>
+          <div><div class="co-title">Programı tamamlayan final projesi</div>
+          <p>Seçtiğin bir iş veya eğitim problemini çözmek amacıyla; <b>güvenli, veritabanı bağlantılı,
+             en az bir otomasyon içeren ve internette yayınlanabilir</b> bir yapay zekâ destekli
+             uygulama geliştir. Modül 8'de kurduğun mini CRM'i genişletebilir ya da Modül 9'daki
+             sektörel senaryolardan birini uçtan uca uygulayabilirsin.</p></div>
+        </div>
+
+        <h3>Final değerlendirme kontrol listesi</h3>
+        <div class="checklist">
+          <div class="check-item"><div class="cb"></div><div><b>Veri güvenliği</b><p>Uygulamada gerçek kişisel veri yok, API anahtarları .env içinde ve .gitignore'a eklenmiş.</p></div></div>
+          <div class="check-item"><div class="cb"></div><div><b>Veritabanı</b><p>Supabase/Firebase bağlantısı çalışıyor ve erişim kuralları (Row Level Security) kontrol edilmiş.</p></div></div>
+          <div class="check-item"><div class="cb"></div><div><b>Otomasyon</b><p>En az bir zamanlanmış görev veya Cowork otomasyonu tanımlı.</p></div></div>
+          <div class="check-item"><div class="cb"></div><div><b>Yayın</b><p>Uygulama Netlify/Vercel/Firebase üzerinden canlı bir adreste erişilebilir.</p></div></div>
+          <div class="check-item"><div class="cb"></div><div><b>Dokümantasyon</b><p>Bir README.md dosyası projenin ne yaptığını ve nasıl çalıştığını anlatıyor.</p></div></div>
+        </div>
+
+        <div class="callout goal" style="margin-top:26px;">
+          <span class="co-icon">🎯</span>
+          <div><div class="co-title">Modül çıktısı</div>
+          <p>Geliştirdiğin yapay zekâ sistemini güvenlik, maliyet, KVKK, bakım ve sürdürülebilirlik
+             açısından değerlendirebiliyorsun — ve programı bitirdiğinde artık yapay zekâyı
+             <b>kullanan</b> değil, onunla <b>üreten</b> birisin.</p></div>
+        </div>
+
+        <h2 id="tebrik"><span class="num">8</span>Tebrikler — programı tamamladın!</h2>
+        <p class="lead">Buraya kadar geldiysen; 1. Gün'de prompt yazmayı ve modelleri karşılaştırmayı,
+          Modül 1-3'te doğru zihniyeti ve terminali, Modül 4-6'da Claude'un tüm ekosistemini ve
+          otomasyonu, Modül 7-9'da kod/yayın/tasarımı öğrendin ve bu modülde her şeyi güvenli bir
+          final projesiyle birleştirdin.</p>
+        <p>Öğrenmeye devam etmek istersen, <a href="araclar.html" style="color:var(--blue);">Araçlar</a>
+          ve <a href="modeller.html" style="color:var(--blue);">AI Modelleri</a> sayfalarına göz atabilir,
+          ya da <a href="sozluk.html" style="color:var(--blue);">Sözlük &amp; SSS</a> sayfasını başvuru
+          kaynağı olarak elinin altında tutabilirsin.</p>
+      </div>
+      <aside class="toc" id="pageToc"></aside>
+    </div>
+  </div>
+
+  <div class="section tight">
+    <div class="container">
+      <div class="pn-nav">
+        <a class="pn-card" href="modul-9.html"><span class="pn-lbl">← Geri</span><span class="pn-title">Modül 9: Tasarım, Ofis ve Sektörel Çözümler</span></a>
+        <a class="pn-card next" href="claude-egitimi.html"><span class="pn-lbl">Bitir →</span><span class="pn-title">Program Anasayfasına Dön</span></a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+<script src="js/main.js"></script>
+</body>
+</html>

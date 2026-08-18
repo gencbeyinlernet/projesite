@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Modül 8 — Uygulama Geliştirme, Veritabanı ve İnternette Yayınlama | AI Eğitim Kılavuzu</title>
+<meta name="description" content="Mini CRM/öğrenci takip uygulaması geliştirme, Supabase/Firebase veritabanı, GitHub proje yönetimi ve Netlify/Vercel/Firebase ile internete yayınlama." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body data-page="modul-8">
+<a class="skip-link" href="#main">İçeriğe geç</a>
+<div id="site-header"></div>
+
+<main id="main">
+  <div class="page-head">
+    <div class="container">
+      <span class="eyebrow amber">📦 Modül 8 / 10</span>
+      <h1>Uygulama Geliştirme, Veritabanı ve İnternette Yayınlama</h1>
+      <p class="page-lead">
+        Programın en somut modülü: burada gerçek bir web uygulaması — kullanıcı girişi, veri
+        kaydetme, arama ve raporlama özellikleri olan bir mini CRM ya da öğrenci takip sistemi —
+        baştan sona geliştirip herkesin erişebileceği bir adrese yayınlayacaksın.
+      </p>
+      <div class="meta-row">
+        <span class="meta-chip">⏱️ Tahmini süre: 2-4 saat</span>
+        <span class="meta-chip">🎯 Ön koşul: Modül 7</span>
+        <span class="meta-chip">🧰 İhtiyacın olan: Claude Code, GitHub hesabı</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="container two-col">
+      <div class="prose">
+
+        <h2 id="planlama"><span class="num">1</span>Yapay zekâ ajanıyla web uygulaması planlama</h2>
+        <p class="lead">Kodlamaya başlamadan önce, uygulamanın ne yapacağını net biçimde tanımlayan
+          kısa bir plan çıkar — bu, Modül 3'te öğrendiğin "brief hazırlama" becerisinin en somut
+          uygulamasıdır.</p>
+        <div class="prompt-ex good">
+          <div class="ph">✅ Örnek planlama istemi</div>
+          <div class="pb">"Küçük bir dershane için öğrenci takip uygulaması geliştireceğiz. Öğretmen
+            giriş yapabilmeli, öğrenci ekleyip düzenleyebilmeli, öğrenci arayabilmeli ve devamsızlık
+            durumunu görebilmeli. Önce sayfa yapısını ve gereken özellikleri madde madde planla,
+            henüz kod yazma."</div>
+        </div>
+
+        <h3>Kullanıcı arayüzü ve temel tasarım oluşturma</h3>
+        <p>Plan onaylandıktan sonra, önce arayüzün iskeletini (sayfa düzeni, menü, ana renkler)
+          oluşturmasını iste. Bu aşamada Artifacts (Modül 4) ile hızlıca önizleme yapabilirsin.</p>
+
+        <h2 id="kayit-giris"><span class="num">2</span>Kullanıcı kayıt ve giriş sistemi geliştirme</h2>
+        <p>Bir uygulamanın "kimin baktığını" bilmesi gerekiyorsa, bir <strong>kimlik doğrulama
+          (authentication)</strong> sistemi kurman gerekir: kullanıcı adı/e-posta ve şifre ile kayıt,
+          ardından giriş. Bu programda bu işlevi genellikle veritabanı sağlayıcısının hazır
+          kimlik doğrulama servisleri (bkz. aşağıda Supabase/Firebase) üstlenir — sıfırdan
+          şifre şifreleme sistemi yazmana gerek kalmaz.</p>
+
+        <h3>Veri ekleme, listeleme, arama ve güncelleme işlemleri</h3>
+        <p>Bir kayıt yönetimi uygulamasının temeli dört işlemdir — kısaca <strong>CRUD</strong>
+          (Create-Read-Update-Delete: Ekle-Oku-Güncelle-Sil) olarak anılır:</p>
+        <ul class="bullets">
+          <li><b>Ekle (Create):</b> Yeni bir öğrenci/müşteri kaydı oluşturan bir form.</li>
+          <li><b>Listele/Ara (Read):</b> Tüm kayıtları gösteren ve isimle filtreleyebilen bir tablo.</li>
+          <li><b>Güncelle (Update):</b> Var olan bir kaydı düzenleyebilme.</li>
+          <li><b>Sil (Delete):</b> Bir kaydı, onay adımından geçirerek kaldırabilme.</li>
+        </ul>
+
+        <h2 id="mini-crm"><span class="num">3</span>Mini CRM uygulaması geliştirme — adım adım</h2>
+        <div class="step-list">
+          <div class="step-item"><div class="sn">1</div><div class="st"><b>Proje klasörü oluştur.</b><p><code>mkdir mini-crm &amp;&amp; cd mini-crm</code> ile boş bir klasör aç, içinde <code>claude</code> komutunu çalıştır.</p></div></div>
+          <div class="step-item"><div class="sn">2</div><div class="st"><b>Arayüz iskeletini kurdur.</b><p>"Öğrenci/müşteri listesi, arama kutusu ve 'yeni kayıt ekle' butonu olan bir ana sayfa oluştur."</p></div></div>
+          <div class="step-item"><div class="sn">3</div><div class="st"><b>Veritabanı bağlantısını ekletle.</b><p>Aşağıdaki Supabase/Firebase adımlarını tamamladıktan sonra, "verileri artık tarayıcı hafızası yerine Supabase'ten oku/yaz" görevini ver.</p></div></div>
+          <div class="step-item"><div class="sn">4</div><div class="st"><b>Arama ve filtreleme ekle.</b><p>"İsimle anlık filtreleme yapan bir arama kutusu ekle."</p></div></div>
+          <div class="step-item"><div class="sn">5</div><div class="st"><b>Test et.</b><p>Birkaç sentetik kayıt ekleyip, arama/düzenleme/silme işlemlerinin doğru çalıştığını kontrol et.</p></div></div>
+        </div>
+
+        <h2 id="veritabani"><span class="num">4</span>Veritabanı kavramları</h2>
+        <p class="lead">Bir <strong>veritabanı</strong>, uygulamanın verilerini kalıcı olarak
+          sakladığı, düzenli bir depodur. Tarayıcı hafızasının (localStorage) aksine, veritabanına
+          kaydedilen veri farklı cihazlardan da erişilebilir ve tarayıcı geçmişi silinse bile kaybolmaz.</p>
+
+        <h3>Supabase ve Firebase kullanımı</h3>
+        <div class="tbl-wrap">
+          <table class="dtbl">
+            <thead><tr><th>Servis</th><th>Özellik</th></tr></thead>
+            <tbody>
+              <tr><td><b>Supabase</b></td><td>Açık kaynaklı, SQL tabanlı; ücretsiz katmanı ile küçük projeler için idealdir. Hazır kimlik doğrulama sistemi içerir.</td></tr>
+              <tr><td><b>Firebase</b></td><td>Google'ın sunduğu, kurulumu çok hızlı olan; gerçek zamanlı veri senkronizasyonu güçlü bir servis.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>İkisi de ücretsiz bir katmanla başlamana izin verir. Claude Code'a "bu projeye Supabase
+          veritabanı bağlantısı ekle, önce hangi tabloları oluşturmam gerektiğini planla" diyerek
+          süreci yönetebilirsin.</p>
+
+        <h3>Kullanıcı ve yetkilendirme sistemleri</h3>
+        <p>Supabase ve Firebase, "hangi kullanıcının hangi veriyi görebileceğini" belirleyen hazır
+          <strong>yetkilendirme (authorization)</strong> kuralları sunar — örneğin bir öğretmen sadece
+          kendi sınıfının verilerini görebilsin diye.</p>
+
+        <h3>Veritabanı güvenlik kuralları</h3>
+        <div class="callout danger">
+          <span class="co-icon">🔒</span>
+          <div><div class="co-title">Asla atlanmaması gereken adım</div>
+          <p>Varsayılan ayarlarla bırakılan bir veritabanı, internetteki herkese açık olabilir. Claude
+             Code'dan "veritabanı güvenlik kurallarını (Row Level Security) kontrol et ve sadece
+             yetkili kullanıcıların veriye erişebildiğinden emin ol" demeyi asla atlama.</p></div>
+        </div>
+
+        <h3>Veri yedekleme ve geri yükleme</h3>
+        <p>Hem Supabase hem Firebase, verilerini dışa aktarma (export) imkânı sunar. Kritik veriler
+          için düzenli (haftalık gibi) manuel bir yedek alma alışkanlığı edinmen önerilir.</p>
+
+        <h2 id="github"><span class="num">5</span>GitHub üzerinden proje yönetimi</h2>
+        <p>GitHub, Modül 7'de öğrendiğin Git depolarının internette barındırıldığı platformdur.
+          Projeni GitHub'a yükleyerek hem yedeklemiş olursun hem de yayınlama (deploy) sürecinin
+          ilk adımını atmış olursun.</p>
+        <div class="code-block">
+          <button class="copy-btn">📋 Kopyala</button>
+          <pre># GitHub'a ilk yükleme (Claude Code'a da aynı adımları yaptırabilirsin):
+git remote add origin https://github.com/kullanici-adin/mini-crm.git
+git branch -M main
+git push -u origin main</pre>
+        </div>
+
+        <h2 id="yayinlama"><span class="num">6</span>Hosting, domain, DNS ve SSL kavramları</h2>
+        <div class="tbl-wrap">
+          <table class="dtbl">
+            <thead><tr><th>Terim</th><th>Anlamı</th></tr></thead>
+            <tbody>
+              <tr><td><b>Hosting</b></td><td>Uygulamanın dosyalarının internette 7/24 erişilebilir şekilde barındırıldığı sunucu hizmeti.</td></tr>
+              <tr><td><b>Domain</b></td><td>Sitenin insan tarafından okunabilir adresi (örn. benimuygulamam.com).</td></tr>
+              <tr><td><b>DNS</b></td><td>Domain adını, sunucunun gerçek adresine yönlendiren "telefon rehberi" sistemi.</td></tr>
+              <tr><td><b>SSL</b></td><td>Site ile ziyaretçi arasındaki veri trafiğini şifreleyen güvenlik katmanı (adres çubuğundaki 🔒 kilit simgesi).</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Netlify, Vercel veya Firebase ile uygulamayı yayımlama</h3>
+        <p>Üçü de GitHub deponu bağladığında otomatik olarak siteni yayınlayan, ücretsiz katmanlı
+          servislerdir. Genel akış şu şekildedir:</p>
+        <div class="step-list">
+          <div class="step-item"><div class="sn">1</div><div class="st"><b>Hesap oluştur.</b><p>Netlify, Vercel veya Firebase Hosting'e GitHub hesabınla giriş yap.</p></div></div>
+          <div class="step-item"><div class="sn">2</div><div class="st"><b>Depoyu bağla.</b><p>"New Project / Yeni Proje" ile GitHub'daki proje deponu seç.</p></div></div>
+          <div class="step-item"><div class="sn">3</div><div class="st"><b>Yayınla.</b><p>Servis otomatik olarak projeyi derler ve sana ücretsiz bir alt alan adı (örn. mini-crm.netlify.app) verir.</p></div></div>
+          <div class="step-item"><div class="sn">4</div><div class="st"><b>(Opsiyonel) Kendi domainini bağla.</b><p>Bir domain satın aldıysan, servisin DNS ayarlarını takip ederek bağlayabilirsin.</p></div></div>
+        </div>
+        <div class="grid grid-3" style="margin-top:14px;">
+          <a class="link-card" href="https://www.netlify.com" target="_blank" rel="noopener noreferrer"><div class="lc-top"><span class="lc-title">Netlify</span></div><span class="lc-desc">Statik ve modern web projeleri için hızlı yayınlama.</span><span class="lc-cta">netlify.com'u aç ↗</span></a>
+          <a class="link-card" href="https://vercel.com" target="_blank" rel="noopener noreferrer"><div class="lc-top"><span class="lc-title">Vercel</span></div><span class="lc-desc">Geliştirici dostu, hızlı dağıtım platformu.</span><span class="lc-cta">vercel.com'u aç ↗</span></a>
+          <a class="link-card" href="https://firebase.google.com" target="_blank" rel="noopener noreferrer"><div class="lc-top"><span class="lc-title">Firebase Hosting</span></div><span class="lc-desc">Google'ın barındırma ve veritabanı çözümü.</span><span class="lc-cta">firebase.google.com'u aç ↗</span></a>
+        </div>
+
+        <h3>Yayın sonrası hata takibi ve güncelleme</h3>
+        <p>Yayınladıktan sonra uygulamanı gerçek kullanıcı gibi test et. Bir hata bulursan, Claude
+          Code'da düzeltmeyi yap, commit al (Modül 7) ve GitHub'a gönder — bağlı hosting servisi
+          değişikliği otomatik olarak yeniden yayınlar.</p>
+
+        <h3>Canlı ortam ve geliştirme ortamının ayrılması</h3>
+        <p>İdeal olan, değişiklikleri önce kimsenin görmediği bir "geliştirme" ortamında test edip,
+          sorun olmadığından emin olduktan sonra "canlı (production)" ortama almaktır. Basit
+          projelerde bu, ayrı bir Git branch'i (dal) kullanarak yapılabilir.</p>
+
+        <h2 id="proje"><span class="num">7</span>Uygulama projesi</h2>
+        <div class="callout goal">
+          <span class="co-icon">🏗️</span>
+          <div><div class="co-title">Bu modülün pratik projesi</div>
+          <p>Kullanıcı girişi, kayıt tutma, arama, filtreleme ve raporlama özelliklerine sahip bir
+             mini CRM veya öğrenci takip sistemi geliştir ve internette yayınla.</p></div>
+        </div>
+
+        <div class="callout goal" style="margin-top:14px;">
+          <span class="co-icon">🎯</span>
+          <div><div class="co-title">Modül çıktısı</div>
+          <p>Veritabanına bağlı çalışan bir web uygulaması geliştirebiliyor ve bu uygulamayı internet
+             ortamında yayınlayabiliyorsun.</p></div>
+        </div>
+      </div>
+      <aside class="toc" id="pageToc"></aside>
+    </div>
+  </div>
+
+  <div class="section tight">
+    <div class="container">
+      <div class="pn-nav">
+        <a class="pn-card" href="modul-7.html"><span class="pn-lbl">← Geri</span><span class="pn-title">Modül 7: Claude Code, Git ve Güvenli Geliştirme</span></a>
+        <a class="pn-card next" href="modul-9.html"><span class="pn-lbl">Sıradaki →</span><span class="pn-title">Modül 9: Tasarım, Ofis ve Sektörel Çözümler</span></a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+<script src="js/main.js"></script>
+</body>
+</html>

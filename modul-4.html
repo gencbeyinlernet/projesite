@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Modül 4 — Claude Chat, Projeler, Artifacts ve Özelleştirme | AI Eğitim Kılavuzu</title>
+<meta name="description" content="Claude Chat arayüzü, Projects ile kalıcı bağlam, Artifacts ile etkileşimli içerik üretimi ve Skills sistemiyle kendi becerilerini oluşturma." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body data-page="modul-4">
+<a class="skip-link" href="#main">İçeriğe geç</a>
+<div id="site-header"></div>
+
+<main id="main">
+  <div class="page-head">
+    <div class="container">
+      <span class="eyebrow amber">📦 Modül 4 / 10</span>
+      <h1>Claude Chat, Projeler, Artifacts ve Özelleştirme</h1>
+      <p class="page-lead">
+        Bu modülde Claude Chat'in tek seferlik bir sohbetten çok daha fazlası olduğunu keşfedeceksin:
+        kalıcı bağlama sahip Projects, etkileşimli içerikler üreten Artifacts ve kendi tekrar eden
+        görevlerini otomatikleştiren Skills.
+      </p>
+      <div class="meta-row">
+        <span class="meta-chip">⏱️ Tahmini süre: 60-90 dakika</span>
+        <span class="meta-chip">🎯 Ön koşul: Modül 1</span>
+        <span class="meta-chip">🧰 İhtiyacın olan: Bir Claude hesabı</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="container two-col">
+      <div class="prose">
+
+        <h2 id="chat-arayuz"><span class="num">1</span>Claude Chat arayüzünün tanıtılması</h2>
+        <p class="lead">claude.ai'a giriş yaptığında karşına üç ana alan çıkar: sol tarafta sohbet ve
+          proje geçmişin, ortada aktif sohbet penceresi, sağda (bir Artifact oluşturulduğunda) canlı
+          önizleme paneli.</p>
+
+        <h3>Model seçimi ve gelişmiş düşünme seçenekleri</h3>
+        <p>Sohbet ekranının üst kısmından hangi Claude modelini kullanacağını seçebilirsin. Karmaşık
+          bir problem çözerken "genişletilmiş düşünme" (extended thinking) seçeneğini açman, modelin
+          cevaba geçmeden önce daha uzun süre "düşünmesini" sağlar — özellikle matematik, kod hata
+          ayıklama veya çok adımlı planlama gerektiren görevlerde fark yaratır.</p>
+
+        <h3>Dosya, görsel ve doküman yükleyerek çalışma</h3>
+        <p>Sohbet kutusunun yanındaki ataç simgesinden veya dosyayı doğrudan pencereye sürükleyerek
+          PDF, Word, Excel, CSV veya görsel dosyaları yükleyebilirsin. Claude, yüklenen belgeyi okuyup
+          özetleyebilir, tablo verisini analiz edebilir ya da bir görseldeki metni/grafiği yorumlayabilir.</p>
+
+        <h3>İnternet araması ve derin araştırma özellikleri</h3>
+        <p>Güncel bir konu hakkında soru sorduğunda Claude, açık olduğunda web araması yaparak güncel
+          kaynaklardan bilgi getirebilir. "Derin araştırma" modları ise tek bir aramayla yetinmeyip,
+          birden fazla kaynağı tarayarak daha kapsamlı, kaynaklı bir rapor hazırlar — uzun bir literatür
+          taraması yapmak yerine kullanışlıdır (yine de kaynakları doğrulamak senin sorumluluğundadır).</p>
+
+        <h3>Yanıt biçimi ve iletişim tarzının özelleştirilmesi</h3>
+        <p>Ayarlar menüsünden Claude'un varsayılan tonunu (resmi/samimi), yanıt uzunluğunu ve tercih
+          ettiğin dili kalıcı olarak belirleyebilirsin — böylece her sohbette bunları tekrar
+          yazmak zorunda kalmazsın.</p>
+
+        <h2 id="projects"><span class="num">2</span>Claude Projects ile proje oluşturma</h2>
+        <p class="lead">Bir "Project", birbiriyle ilgili tüm sohbetlerini, dosyalarını ve talimatlarını
+          tek bir çatı altında toplayan kalıcı bir çalışma alanıdır.</p>
+        <div class="step-list">
+          <div class="step-item"><div class="sn">1</div><div class="st"><b>Yeni proje oluştur.</b><p>Sol menüden "Projects → Yeni Proje" seçeneğine tıkla, bir isim ver (örn. "8. Sınıf Fen Bilimleri").</p></div></div>
+          <div class="step-item"><div class="sn">2</div><div class="st"><b>Proje açıklaması ve talimatları yaz.</b><p>"Bu projede 8. sınıf müfredatına uygun içerikler üretilecek, MEB kazanımlarına sadık kalınacak" gibi kalıcı kurallar belirle.</p></div></div>
+          <div class="step-item"><div class="sn">3</div><div class="st"><b>Kaynak dosyalarını ekle.</b><p>Müfredat PDF'i, önceki ders notların veya kurumsal şablonlarını projeye yükle — her yeni sohbette Claude bunları otomatik hatırlar.</p></div></div>
+          <div class="step-item"><div class="sn">4</div><div class="st"><b>Sohbetleri proje altında başlat.</b><p>Artık o projeyle ilgili her yeni konuşmayı bu proje içinde başlatarak bağlamı koru.</p></div></div>
+        </div>
+
+        <h3>Proje hafızasının etkili kullanılması</h3>
+        <p>Bir projeye eklediğin her doküman ve talimat, o proje kapsamındaki tüm sohbetlerde
+          otomatik olarak devreye girer. Bu sayede aynı kurumsal bağlamı (örn. okulun logosu, kurumun
+          yazım kuralları, marka tonunuz) her defasında yeniden açıklamana gerek kalmaz.</p>
+
+        <h3>Sohbetlerin projeler altında düzenlenmesi</h3>
+        <p>Farklı konuları farklı projelere ayırman (örn. "Sınav Hazırlığı", "Veli Raporları", "Kişisel
+          Notlar") hem bağlam karışıklığını önler hem de daha sonra ilgili sohbeti kolayca bulmanı
+          sağlar.</p>
+
+        <h2 id="artifacts"><span class="num">3</span>Artifacts ile doküman, araç, oyun ve web uygulaması oluşturma</h2>
+        <p class="lead">Artifacts, Claude'un ürettiği kodu veya içeriği sohbet balonu içine
+          gömmek yerine, yanda ayrı ve canlı çalışan bir pencerede göstermesidir.</p>
+        <p>Bir Artifact; statik bir metin dokümanı, etkileşimli bir HTML sayfası, çalışan bir mini
+          oyun, bir veri görselleştirmesi ya da tam işlevli küçük bir web uygulaması olabilir. Claude
+          kodu yazar yazmaz sağ panelde anında görüp test edebilirsin — hiçbir kurulum gerekmez.</p>
+        <div class="prompt-ex good">
+          <div class="ph">✅ Örnek istem</div>
+          <div class="pb">"6. sınıf öğrencileri için, kesirleri konu alan; doğru cevapta puan
+            kazandıran, yanlışta ipucu veren, tek sayfalık interaktif bir HTML alıştırma oyunu
+            oluştur. Artifact olarak göster."</div>
+        </div>
+
+        <h3>Etkileşimli eğitim materyalleri geliştirme</h3>
+        <p>Artifacts'ı flashcard setleri, quizler, zaman çizelgeleri, interaktif hesaplayıcılar veya
+          basit simülasyonlar üretmek için kullanabilirsin. Öğrencilerinle ya da ekibinle paylaşmak
+          için bağlantısını doğrudan kopyalayabilirsin.</p>
+
+        <h2 id="skills"><span class="num">4</span>Skills sisteminin çalışma mantığı</h2>
+        <p class="lead">Skills (Beceriler), Claude'a belirli bir görevi <em>her zaman aynı standartla</em>
+          nasıl yapacağını öğreten, yeniden kullanılabilir talimat paketleridir.</p>
+        <p>Örneğin sürekli aynı formatta haftalık rapor hazırlıyorsan, bu formatı ve kuralları bir kez
+          bir "beceri" olarak tanımlarsın; sonrasında her seferinde aynı talimatları yeniden yazmak
+          yerine sadece o beceriyi çağırırsın.</p>
+
+        <h3>Hazır becerileri kullanma ve yeni beceri oluşturma</h3>
+        <p>Claude'un sunduğu hazır beceri kütüphanesinden (örn. belge biçimlendirme, tablo düzenleme)
+          doğrudan yararlanabilir ya da kendi ihtiyacına özel yeni bir beceri tanımlayabilirsin.</p>
+
+        <h3>Markdown ve SKILL.md dosyalarıyla çalışma</h3>
+        <p>Bir beceri, temelde <code>SKILL.md</code> adlı bir Markdown dosyasıdır — beceri ne yapar,
+          hangi adımları izler ve hangi kurallara uyar, sade metinle burada tanımlanır.</p>
+        <div class="code-block">
+          <button class="copy-btn">📋 Kopyala</button>
+          <pre># SKILL.md — örnek: "Haftalık Veli Bülteni" becerisi
+
+## Amaç
+Öğretmenin haftalık olarak velilere gönderdiği bülteni standart bir formatta hazırlamak.
+
+## Adımlar
+1. Bu hafta işlenen konuları madde madde listele.
+2. Gelecek hafta yapılacak sınav/ödevleri ayrı bir başlıkta belirt.
+3. Kapanışta kısa, sıcak bir motivasyon cümlesi ekle.
+
+## Kurallar
+- Ton: sıcak, samimi ama profesyonel.
+- Uzunluk: en fazla 200 kelime.
+- Format: başlıklar ve madde işaretleriyle, Markdown.</pre>
+        </div>
+
+        <h3>Hazırlanan becerileri dışa aktarma ve paylaşma</h3>
+        <p>Oluşturduğun bir beceriyi dosya olarak dışa aktarıp meslektaşlarınla paylaşabilir ya da
+          farklı projelerinde yeniden kullanabilirsin — bu, ekip içinde standartlaşmayı kolaylaştırır.</p>
+
+        <div class="callout goal" style="margin-top:26px;">
+          <span class="co-icon">🎯</span>
+          <div><div class="co-title">Modül çıktısı</div>
+          <p>Claude içerisinde kalıcı bağlama sahip projeler oluşturabiliyor, özelleştirilmiş
+             beceriler geliştirebiliyor ve etkileşimli içerikler üretebiliyorsun.</p></div>
+        </div>
+      </div>
+      <aside class="toc" id="pageToc"></aside>
+    </div>
+  </div>
+
+  <div class="section tight">
+    <div class="container">
+      <div class="pn-nav">
+        <a class="pn-card" href="modul-3.html"><span class="pn-lbl">← Geri</span><span class="pn-title">Modül 3: Terminal ve Ajanla İletişim</span></a>
+        <a class="pn-card next" href="modul-5.html"><span class="pn-lbl">Sıradaki →</span><span class="pn-title">Modül 5: Bağlayıcılar, MCP ve Cowork</span></a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+<script src="js/main.js"></script>
+</body>
+</html>

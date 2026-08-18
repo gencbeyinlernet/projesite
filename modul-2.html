@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Modül 2 — Kurulum, Hesaplar ve Çalışma Ortamının Hazırlanması | AI Eğitim Kılavuzu</title>
+<meta name="description" content="Claude hesabı açma, masaüstü uygulaması kurulumu, WSL, Node.js, terminal, Claude Code kurulumu ve VS Code entegrasyonu — adım adım." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body data-page="modul-2">
+<a class="skip-link" href="#main">İçeriğe geç</a>
+<div id="site-header"></div>
+
+<main id="main">
+  <div class="page-head">
+    <div class="container">
+      <span class="eyebrow teal">📦 Modül 2 / 10</span>
+      <h1>Kurulum, Hesaplar ve Çalışma Ortamının Hazırlanması</h1>
+      <p class="page-lead">
+        Bu modül biraz daha tekniktir ama merak etme: her adım, hiç terminal açmamış biri için bile
+        harfiyen takip edilebilecek şekilde yazıldı. Sonunda kendi bilgisayarında çalışan tam bir
+        Claude geliştirme ortamına sahip olacaksın.
+      </p>
+      <div class="meta-row">
+        <span class="meta-chip">⏱️ Tahmini süre: 60-90 dakika</span>
+        <span class="meta-chip">🎯 Ön koşul: Modül 1</span>
+        <span class="meta-chip">🧰 İhtiyacın olan: Bilgisayar + internet + e-posta</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="container two-col">
+      <div class="prose">
+
+        <h2 id="hesap"><span class="num">1</span>Claude hesap ve abonelik seçeneklerinin değerlendirilmesi</h2>
+        <p class="lead">Her şeyden önce bir Claude hesabına ihtiyacın var. claude.ai adresine gidip
+          e-posta adresinle veya Google hesabınla dakikalar içinde ücretsiz kayıt olabilirsin.</p>
+        <div class="tbl-wrap">
+          <table class="dtbl">
+            <thead><tr><th>Plan</th><th>Kimin için uygun</th><th>Genel özellik</th></tr></thead>
+            <tbody>
+              <tr><td><b>Free</b></td><td>Yeni başlayanlar, deneme amaçlı kullanım</td><td>Sınırlı günlük mesaj hakkı ile temel Claude Chat erişimi</td></tr>
+              <tr><td><b>Pro</b></td><td>Düzenli kullanan bireysel kullanıcılar</td><td>Daha yüksek kullanım limiti, Projects ve gelişmiş model erişimi</td></tr>
+              <tr><td><b>Max</b></td><td>Yoğun kod/otomasyon üreten güç kullanıcıları</td><td>En yüksek kullanım limiti; Claude Code için önerilen plan</td></tr>
+              <tr><td><b>API (kullandıkça öde)</b></td><td>Geliştiriciler, kurumsal entegrasyonlar</td><td>Token bazlı ücretlendirme; kendi uygulamana Claude'u gömmek istediğinde kullanılır</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout tip">
+          <span class="co-icon">💡</span>
+          <div><div class="co-title">Nereden başlamalı?</div>
+          <p>Bu programı takip ederken <b>Free</b> plan ile başlayabilirsin. Modül 7 ve sonrasında
+             (Claude Code ile yoğun kod üretimi) plan yükseltmeyi değerlendirebilirsin. Maliyet
+             yönetimini Modül 10'da detaylıca ele alacağız.</p></div>
+        </div>
+        <a class="link-card" style="margin-top:14px;" href="https://claude.ai" target="_blank" rel="noopener noreferrer">
+          <div class="lc-top"><span class="lc-title">Claude'a Kaydol</span></div>
+          <span class="lc-desc">claude.ai üzerinden ücretsiz hesap oluşturma sayfası.</span><span class="lc-cta">claude.ai'ı aç ↗</span></a>
+
+        <h2 id="masaustu"><span class="num">2</span>Claude masaüstü uygulamasının kurulması</h2>
+        <p>Tarayıcı yerine bağımsız bir uygulama kullanmak istersen, Claude'un masaüstü uygulamasını
+          bilgisayarına kurabilirsin. Bu, özellikle dosya sürükle-bırak ve bildirimler açısından daha
+          rahat bir deneyim sunar.</p>
+        <div class="step-list">
+          <div class="step-item"><div class="sn">1</div><div class="st"><b>claude.ai/download adresine git.</b><p>İşletim sistemine uygun (Windows/macOS) kurulum dosyası otomatik olarak önerilecektir.</p></div></div>
+          <div class="step-item"><div class="sn">2</div><div class="st"><b>İndirilen kurulum dosyasını çalıştır.</b><p>Windows'ta .exe dosyasına, macOS'ta .dmg dosyasına çift tıklayıp ekrandaki yönergeleri takip et.</p></div></div>
+          <div class="step-item"><div class="sn">3</div><div class="st"><b>Hesabınla giriş yap.</b><p>Bir önceki adımda oluşturduğun claude.ai hesabıyla oturum aç.</p></div></div>
+        </div>
+
+        <h3>Windows, macOS ve Linux kurulum farklılıkları</h3>
+        <ul class="bullets">
+          <li><b>Windows:</b> Masaüstü uygulaması doğrudan .exe ile kurulur; terminal araçları için
+            PowerShell veya Windows Terminal kullanılır. Claude Code gibi bazı araçlar için WSL
+            (aşağıda anlatılıyor) önerilir.</li>
+          <li><b>macOS:</b> Masaüstü uygulaması .dmg ile kurulur; yerleşik Terminal uygulaması
+            doğrudan kullanılabilir, ekstra bir alt sisteme gerek yoktur.</li>
+          <li><b>Linux:</b> Masaüstü uygulaması bazı dağıtımlarda paket yöneticisi (örn. apt, snap) ile
+            veya doğrudan tarayıcı üzerinden claude.ai kullanılarak sağlanabilir; terminal zaten
+            işletim sisteminin bir parçasıdır.</li>
+        </ul>
+
+        <h2 id="wsl"><span class="num">3</span>Windows Subsystem for Linux (WSL) kurulumu</h2>
+        <p>WSL, Windows içinde tam bir Linux ortamı çalıştırmanı sağlar. Claude Code gibi terminal
+          tabanlı ajanlar Linux/macOS ortamında en sorunsuz şekilde çalışır; bu yüzden Windows
+          kullanıyorsan WSL kurmanı öneririz (zorunlu değildir — doğrudan PowerShell üzerinden de
+          devam edebilirsin).</p>
+        <div class="code-block">
+          <button class="copy-btn">📋 Kopyala</button>
+          <pre># Windows PowerShell'i "Yönetici olarak çalıştır" ile açıp şu komutu yazın:
+wsl --install
+
+# Kurulum tamamlandıktan sonra bilgisayarı yeniden başlatın.
+# Yeniden başlattıktan sonra bir Linux kullanıcı adı ve şifresi oluşturmanız istenecektir.</pre>
+        </div>
+
+        <h2 id="nodejs"><span class="num">4</span>Node.js ve gerekli geliştirme araçlarının kurulması</h2>
+        <p>Node.js, Claude Code dâhil birçok modern yapay zekâ aracının çalışması için gereken temel
+          çalışma ortamıdır. <a href="https://nodejs.org" target="_blank" rel="noopener noreferrer" style="color:var(--blue);">nodejs.org</a>
+          adresinden "LTS" (uzun süreli destek) etiketli sürümü indirmen yeterli.</p>
+        <div class="code-block">
+          <button class="copy-btn">📋 Kopyala</button>
+          <pre># Kurulum tamamlandıktan sonra terminali (veya WSL'i) açıp doğrulayın:
+node -v
+# Örnek çıktı: v20.11.0
+
+npm -v
+# Örnek çıktı: 10.2.4</pre>
+        </div>
+
+        <h2 id="terminal"><span class="num">5</span>Terminal ve komut satırı ortamının hazırlanması</h2>
+        <p>Terminal, bilgisayarına fare yerine yazarak komut verdiğin pencredir. Windows'ta
+          <strong>Windows Terminal</strong> veya <strong>PowerShell</strong>, macOS'ta yerleşik
+          <strong>Terminal</strong> uygulaması, Linux'ta ise dağıtımın kendi terminali kullanılır.
+          Bu programda terminal kullanımını Modül 3'te sıfırdan, çok daha ayrıntılı şekilde
+          işleyeceğiz — burada sadece açık kalmasını sağlamamız yeterli.</p>
+
+        <h2 id="claude-code-kurulum"><span class="num">6</span>Claude Code kurulumu ve ilk komutun çalıştırılması</h2>
+        <p>Node.js kurulduktan sonra, Claude Code'u terminale şu tek satırlık komutla kurabilirsin:</p>
+        <div class="code-block">
+          <button class="copy-btn">📋 Kopyala</button>
+          <pre># 1. Adım: Claude Code'u global olarak kur
+npm install -g @anthropic-ai/claude-code
+
+# 2. Adım: Kurulumu doğrula
+claude --version
+
+# 3. Adım: Bir proje klasörüne geçip Claude Code'u başlat
+cd Belgeler/ilk-projem
+claude
+
+# İlk çalıştırmada tarayıcı üzerinden Claude hesabınla giriş yapman istenecektir.
+# Giriş yaptıktan sonra terminale doğrudan görev yazabilirsin, örneğin:
+# > Bu klasörde basit bir "merhaba dünya" HTML sayfası oluştur.</pre>
+        </div>
+        <div class="callout tip">
+          <span class="co-icon">✅</span>
+          <div><div class="co-title">Başarı işareti</div>
+          <p>Terminalde <code>claude</code> yazdığında karşına Claude Code'un karşılama ekranı
+             geliyorsa kurulum başarılı demektir.</p></div>
+        </div>
+
+        <h2 id="vscode"><span class="num">7</span>Visual Studio Code ile Claude Code kullanımı</h2>
+        <p>Visual Studio Code (VS Code), en yaygın kullanılan ücretsiz kod editörüdür. Claude Code'u
+          VS Code'un içine gömülü terminalden çalıştırarak, kod değişikliklerini editörde canlı
+          olarak izleyebilirsin.</p>
+        <div class="step-list">
+          <div class="step-item"><div class="sn">1</div><div class="st"><b>VS Code'u kur.</b><p><a href="https://code.visualstudio.com" target="_blank" rel="noopener noreferrer" style="color:var(--blue);">code.visualstudio.com</a> adresinden işletim sistemine uygun sürümü indir.</p></div></div>
+          <div class="step-item"><div class="sn">2</div><div class="st"><b>Proje klasörünü aç.</b><p>VS Code'da "Dosya → Klasör Aç" ile üzerinde çalışacağın klasörü seç.</p></div></div>
+          <div class="step-item"><div class="sn">3</div><div class="st"><b>Gömülü terminali aç.</b><p>Üst menüden "Terminal → Yeni Terminal" seçeneğiyle VS Code içinde bir terminal penceresi açılır; buradan <code>claude</code> komutunu çalıştırabilirsin.</p></div></div>
+        </div>
+
+        <h3>Terminal, masaüstü ve IDE üzerinden çalışma yöntemleri</h3>
+        <p>Aynı Claude Code aracını üç farklı şekilde kullanabilirsin: doğrudan <strong>terminalden</strong>
+          (hız ve kontrol için), <strong>masaüstü uygulaması</strong> içinden (daha görsel bir deneyim
+          için) veya <strong>VS Code içine gömülü terminalden</strong> (kod değişikliklerini anlık
+          izlemek için). Hangisini seçeceğin tamamen tercih meselesidir; bu program boyunca VS Code +
+          terminal kombinasyonu önerilir.</p>
+
+        <h2 id="model-maliyet"><span class="num">8</span>Model seçimi ve kullanım maliyetleri</h2>
+        <p>Claude ailesinde farklı büyüklükte modeller bulunur: daha küçük/hızlı modeller basit
+          görevler için düşük maliyetli ve hızlıyken, en güçlü modeller karmaşık muhakeme ve büyük
+          kod tabanları için daha yüksek kaliteli ama daha maliyetli sonuç üretir. Genel kural: basit,
+          tekrar eden bir görev için hızlı/ucuz modeli; karmaşık planlama veya büyük bir kod tabanının
+          analizini gerektiren görevler için en güçlü modeli tercih et. Maliyet yönetimini Modül
+          10'da ayrıntılı olarak ele alacağız.</p>
+
+        <h2 id="dogrulama"><span class="num">9</span>Kurulum doğrulama testleri</h2>
+        <div class="checklist">
+          <div class="check-item"><div class="cb"></div><div><b>claude.ai'da oturum açabiliyorum.</b></div></div>
+          <div class="check-item"><div class="cb"></div><div><b><code>node -v</code> komutu bir sürüm numarası döndürüyor.</b></div></div>
+          <div class="check-item"><div class="cb"></div><div><b><code>claude --version</code> komutu hata vermiyor.</b></div></div>
+          <div class="check-item"><div class="cb"></div><div><b>Terminalde <code>claude</code> yazınca karşılama ekranı açılıyor.</b></div></div>
+          <div class="check-item"><div class="cb"></div><div><b>VS Code içinde bir terminal penceresi açabiliyorum.</b></div></div>
+        </div>
+
+        <h2 id="hatalar"><span class="num">10</span>En sık karşılaşılan kurulum hataları ve çözümleri</h2>
+        <div class="tbl-wrap">
+          <table class="dtbl">
+            <thead><tr><th>Hata</th><th>Olası neden</th><th>Çözüm</th></tr></thead>
+            <tbody>
+              <tr><td><b>"'claude' is not recognized..."</b></td><td>npm global kurulum yolu (PATH) sistemde tanımlı değil</td><td>Terminali kapatıp yeniden açın; sorun devam ederse bilgisayarı yeniden başlatın</td></tr>
+              <tr><td><b>"'npm' is not recognized..."</b></td><td>Node.js kurulmamış veya kurulum tamamlanmamış</td><td>nodejs.org'dan LTS sürümü yeniden indirip kurun</td></tr>
+              <tr><td><b>İzin (permission) hatası</b></td><td>Global paket kurulumu için yetki eksikliği (özellikle macOS/Linux)</td><td>Kurulumu bir Node sürüm yöneticisi (nvm) ile yapın ya da komutu yönetici izniyle çalıştırın</td></tr>
+              <tr><td><b>Giriş ekranı tarayıcıda açılmıyor</b></td><td>Varsayılan tarayıcı ayarı veya güvenlik duvarı engeli</td><td>Terminaldeki bağlantıyı manuel olarak kopyalayıp tarayıcıya yapıştırın</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout goal" style="margin-top:26px;">
+          <span class="co-icon">🎯</span>
+          <div><div class="co-title">Modül çıktısı</div>
+          <p>Kendi bilgisayarında yapay zekâ ajanlarıyla çalışabileceğin geliştirme ortamını kurdun ve
+             temel doğrulama kontrollerini gerçekleştirebiliyorsun.</p></div>
+        </div>
+      </div>
+      <aside class="toc" id="pageToc"></aside>
+    </div>
+  </div>
+
+  <div class="section tight">
+    <div class="container">
+      <div class="pn-nav">
+        <a class="pn-card" href="modul-1.html"><span class="pn-lbl">← Geri</span><span class="pn-title">Modül 1: Ajanlara Giriş</span></a>
+        <a class="pn-card next" href="modul-3.html"><span class="pn-lbl">Sıradaki →</span><span class="pn-title">Modül 3: Terminal ve Ajanla İletişim</span></a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+<script src="js/main.js"></script>
+</body>
+</html>
